@@ -1,0 +1,36 @@
+{
+    "candidates": [
+        {
+            "id": 1,
+            "name": "Michael Kruit",
+            "studentnumber": "243102",
+            "cohort": "2014-2015",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311"
+        },
+        {
+            "id": 2,
+            "name": "Marcel Fokke",
+            "studentnumber": "102493",
+            "cohort": "2014-2015",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311"
+        },
+        {
+            "id": 3,
+            "name": "André Nannen",
+            "studentnumber": "254812",
+            "cohort": "2014-2015",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311"
+        },
+        {
+            "id": 4,
+            "name": "Sebastian Oosterhof",
+            "studentnumber": "209268",
+            "cohort": "2014-2015",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311"
+        }
+    ]
+}
