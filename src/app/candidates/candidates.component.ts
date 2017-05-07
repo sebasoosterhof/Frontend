@@ -1,22 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
+import { MdDialog } from '@angular/material';
 
-
-// const candidates = [
-//     {
-//         id: 1, name: 'Michael Kruit', studentnumber: '001'
-//     },
-//     {
-//         id: 2, name: 'Marcel Fokke', studentnumber: '002'
-//     },
-//     {
-//         id: 3, name: 'André Nannen', studentnumber: '003'
-//     },
-//     {
-//         id: 4, name: 'Sebastian Oosterhof', studentnumber: '004'
-//     }
-// ];
+import { AddCandidateDialogComponent } from '../dialog/add-candidate-dialog/add-candidate-dialog.component';
 
 @Component({
     selector: 'app-candidates',
@@ -26,41 +13,38 @@ import { Http } from '@angular/http';
 export class CandidatesComponent implements OnInit {
     candidates: Array<any>;
     title = 'Kandidaten';
+    selectedValue: string;
+    selectedOption: string;
 
-    // candidates = [
-    //     {
-    //         id: 1, name: 'Michael Kruit', studentnumber: '001'
-    //     },
-    //     {
-    //         id: 2, name: 'Marcel Fokke', studentnumber: '002'
-    //     },
-    //     {
-    //         id: 3, name: 'André Nannen', studentnumber: '003'
-    //     },
-    //     {
-    //         id: 4, name: 'Sebastian Oosterhof', studentnumber: '004'
-    //     }
-    // ];
+    cohort = [
+        { value: '0', viewValue: 'Kies...'},
+        { value: '1', viewValue: '2012-2013' },
+        { value: '2', viewValue: '2013-2014' },
+        { value: '3', viewValue: '2014-2015' },
+        { value: '4', viewValue: '2015-2016' },
+        { value: '5', viewValue: '2016-2017' },
+    ];
 
     pvb = [
-        { value: 'none-0', viewValue: '-' },
-        { value: 'nee-1', viewValue: 'Nee' },
-        { value: 'ja-2', viewValue: 'Ja' },
-        { value: 'gehaald-3', viewValue: 'Gehaald' },
-        { value: 'vaststellingslijst-4', viewValue: 'Vaststellingslijst' }
+        { value: '0', viewValue: 'Kies...' },
+        { value: '1', viewValue: 'Nee' },
+        { value: '2', viewValue: 'Ja' },
+        { value: '3', viewValue: 'Gehaald' },
+        { value: '4', viewValue: 'Vaststellingslijst' }
     ];
 
     og = [
-        { value: 'none-0', viewValue: '-' },
-        { value: 'aangevraagd-1', viewValue: 'Aangevraagd' },
-        { value: 'ingepland-2', viewValue: 'Ingepland' },
-        { value: 'gehaald-3', viewValue: 'Gehaald' },
-        { value: 'doorschuiven-4', viewValue: 'Doorschuiven' }
+        { value: '0', viewValue: 'Kies...' },
+        { value: '1', viewValue: 'Aangevraagd' },
+        { value: '2', viewValue: 'Ingepland' },
+        { value: '3', viewValue: 'Gehaald' },
+        { value: '4', viewValue: 'Doorschuiven' }
     ];
 
 
+    protected addCandidateDialogComponent = AddCandidateDialogComponent;
 
-    constructor(private router: Router, private http: Http) {
+    constructor(private router: Router, private http: Http, public dialog: MdDialog) {
         this.http.get('../../assets/data.json')
             .map(response => response.json().candidates)
             .subscribe(res => this.candidates = res);
@@ -68,5 +52,17 @@ export class CandidatesComponent implements OnInit {
 
     public ngOnInit() {
     }
+
+    protected openDialog() {
+        const dialogRef = this.dialog.open(this.addCandidateDialogComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            this.selectedOption = result;
+        });
+    }
+
+    protected ogChanged(value: string) {
+        console.log(value);
+    }
+
 
 }

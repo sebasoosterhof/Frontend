@@ -10,39 +10,83 @@
             <th>Datum aanvraag PVB</th>
             <th>Akkoord PVB</th>
             <th>PVB</th>
-            <th>Datum OG</th>
+            <th>Datum aanvraag OG</th>
             <th>OG</th>
             <th>Opmerkingen</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let c of candidates" class="candidate">
-            <td data-title="Naam">{{ c.name }}</td>
-            <td data-title="Studentnummer">{{ c.studentnumber }}</td>
-            <td data-title="Opleiding">{{ c.education }}</td>
-            <td data-title="Crebo">{{ c.crebo }}</td>
-            <td data-title="Cohort">{{ c.cohort }}</td>
-            <td data-title="WPT/HBE">1 t/m 7</td>
-            <td data-title="Datum aanvraag PVB">10-05-2017</td>
+        <tr *ngFor="let candidate of candidates" class="candidate">
+            <td data-title="Naam">{{ candidate.name }} {{ candidate.surname }} </td>
+            <td data-title="Studentnummer">{{ candidate.studentnumber }}</td>
+            <td data-title="Opleiding">{{ candidate.education }}</td>
+            <td data-title="Crebo">{{ candidate.crebo }}</td>
+            <td data-title="Cohort">
+                <md-select [(ngModel)]="selectedValue">
+                    <md-option *ngFor="let co of cohort" [value]="cohort.value">
+                        {{ co.viewValue }}
+                    </md-option>
+                </md-select>
+            </td>
+            <td data-title="WPT/HBE">
+                <md-input-container>
+                    <input mdInput value="1 t/m 7">
+                </md-input-container>
+            </td>
+            <td data-title="Datum aanvraag PVB">
+                <md-input-container>
+                    <input mdInput value="10-05-2017">
+                </md-input-container>
+            </td>
             <td data-title="Akkoord PVB">
-                <md-select placeholder="Akkoord PVB">
+                <md-select [(ngModel)]="selectedValue">
                     <md-option *ngFor="let p of pvb" [value]="pvb.value">
                         {{ p.viewValue }}
                     </md-option>
                 </md-select>
             </td>
-            <td data-title="PVB">1 t/m 4</td>
-            <td data-title="Datum OG">20-05-2017</td>
+            <td data-title="PVB">
+                <md-input-container>
+                    <input mdInput value="1 t/m 4">
+                </md-input-container>
+            </td>
+            <td data-title="Datum OG">
+                <md-input-container>
+                    <input mdInput value="20-05-2017">
+                </md-input-container>
+            </td>
             <td data-title="OG">
-                <md-select placeholder="Ontwikkelgesprek">
+                <md-select [(ngModel)]="selectedValue" (change)="ogChanged(selectedValue)">
                     <md-option *ngFor="let o of og" [value]="og.value">
                         {{ o.viewValue }}
                     </md-option>
                 </md-select>
             </td>
-            <td data-title="Opmerkingen"></td>
+            <td data-title="Opmerkingen">
+                <!--<button md-button (click)="openDialog()"><md-icon>note_add</md-icon></button>-->
+                <div fxLayout="row" fxLayoutAlign="space-around center">
+                    <div fxFlex="50" fxFlexOffset="10" fxFlexAlign="center center">
+                        <md-icon (click)="openDialog()" class="add-remark">note_add</md-icon>
+                    </div>
+                    <div fxFlex fxFlexAlign="center center">
+                        <md-icon>note_add</md-icon>
+                    </div>
+                </div>
+            </td>
         </tr>
-        <!-- New Candidate -->
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--New Candidate 
         <tr class="new-candidate">
             <td data-title="Naam">
                 <md-input-container>
@@ -80,7 +124,7 @@
                 </md-input-container>
             </td>
             <td data-title="Akkoord PVB">
-                <md-select placeholder="Akkoord PVB">
+                <md-select placeholder="Akkoord">
                     <md-option *ngFor="let p of pvb" [value]="pvb.value">
                         {{ p.viewValue }}
                     </md-option>
@@ -103,6 +147,6 @@
                     </md-option>
                 </md-select>
             </td>
-        </tr>
+        </tr>-->
     </tbody>
 </table>

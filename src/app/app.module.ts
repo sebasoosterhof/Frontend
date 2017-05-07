@@ -14,14 +14,18 @@ import { AppComponent } from './app.component';
 import { OverviewComponent } from './overview/overview.component';
 import { CandidatesComponent } from './candidates/candidates.component';
 import { GraduatesComponent } from './graduates/graduates.component';
+import { AddCandidateDialogComponent } from './dialog/add-candidate-dialog/add-candidate-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
     CandidatesComponent,
-    GraduatesComponent
+    GraduatesComponent,
+    AddCandidateDialogComponent
   ],
+  entryComponents: [AddCandidateDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,

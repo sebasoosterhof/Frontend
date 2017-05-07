@@ -32,7 +32,8 @@ $table-border-color:            #e0e0e0;
       > th,
       > td {
         text-align: left;
-        padding: $table-cell-padding;
+        padding-top: $table-cell-padding;
+        padding-bottom: $table-cell-padding;
         vertical-align: top;
         border-top: 0;
       }
@@ -66,4 +67,16 @@ $table-border-color:            #e0e0e0;
       background-color: $table-bg-hover;
     }
   }
+}
+
+.green { 
+    background-color: lawngreen;
+}
+
+.blue {
+    background-color: skyblue;
+}
+
+.add-remark:hover {
+    cursor: pointer;
 }

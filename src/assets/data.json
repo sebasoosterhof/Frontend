@@ -2,7 +2,8 @@
     "candidates": [
         {
             "id": 1,
-            "name": "Michael Kruit",
+            "name": "Michael",
+            "surname": "Kruit",
             "studentnumber": "243102",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
@@ -10,7 +11,8 @@
         },
         {
             "id": 2,
-            "name": "Marcel Fokke",
+            "name": "Marcel",
+            "surname": "Fokke",
             "studentnumber": "102493",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
@@ -18,15 +20,17 @@
         },
         {
             "id": 3,
-            "name": "André Nannen",
-            "studentnumber": "254812",
+            "name": "André",
+            "surname": "Nannen",
+            "studentnumber": "211309",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
             "crebo": "95311"
         },
         {
             "id": 4,
-            "name": "Sebastian Oosterhof",
+            "name": "Sebastian",
+            "surname": "Oosterhof",
             "studentnumber": "209268",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
