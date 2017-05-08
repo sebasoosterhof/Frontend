@@ -4,46 +4,20 @@
 
     <div fxLayout="column" class="add-remark">
 
-        <div fxLayout="column">
-            <!--<md-select [(ngModel)]="selectedValue">
-                <md-option *ngFor="let co of cohort" [value]="cohort.value">
-                    {{ co.viewValue }}
+        <div fxLayout="row">
+            <md-select [(ngModel)]="selectedValue">
+                <md-option *ngFor="let ec of examComponents" [value]="examComponents.value">
+                    {{ ec.viewValue }}
                 </md-option>
-            </md-select>-->
+            </md-select>
         </div>
 
-        <div fxLayout="column" fxFlexOffset="10" class="inputs">
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Voornaam" value="">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Achternaam" value="">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Studentnummer" value="">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Opleiding" value="">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Crebo" value="">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput placeholder="Cohort" value="">
-                </md-input-container>
-            </div>
-
+        <div fxLayout="row">
+            <textarea class="remark-input"></textarea>
         </div>
     </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="end center">
+    <button md-button>Annuleren</button>
+    <button md-raised-button color="primary">Opslaan</button>
 </div>

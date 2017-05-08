@@ -7,5 +7,7 @@ import { MdDialogRef } from '@angular/material';
   styleUrls: ['./add-candidate-dialog.component.scss']
 })
 export class AddCandidateDialogComponent {
-  constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>) {}
+
+  constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>) { }
+
 }

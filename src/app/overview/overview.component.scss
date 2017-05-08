@@ -1,1 +1,16 @@
 @import '../../styles.scss';
+
+.fab-button {
+    position: absolute;
+    z-index: 1000;  
+    top: 84px;
+    right: 40px; 
+}
+
+.menu-button {
+    margin-left: 90rem;
+}
+
+.title {
+    margin: 2rem;
+}

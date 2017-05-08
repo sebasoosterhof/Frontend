@@ -1,0 +1,39 @@
+<div class="wrapper" fxLayoutAlign="center center">
+    <div fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center" class="login-form">
+        <div fxLayout="row" fxLayoutALign="center center">
+            <div>
+                <h2>Login om examenaanvragen te bekijken</h2>
+            </div>
+        </div>
+
+        <div fxLayout="row">
+            <div fxLayout="column">
+                <div class="standard-padding">
+                    Emailadres:
+                </div>
+
+                <div>
+                    Wachtwoord:
+                </div>
+            </div>
+
+            <div fxLayout="column">
+                <div fxFlexOffset="10">
+                    <md-input-container>
+                        <input mdInput placeholder="Emailadres" value="">
+                    </md-input-container>
+                </div>
+
+                <div fxFlexOffset="10">
+                    <md-input-container class="input">
+                        <input mdInput type="password" placeholder="Wachtwoord" value="">
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center center" class="standard-padding">
+            <button md-raised-button color="primary" routerLink="/overzicht">Inloggen</button>
+        </div>
+    </div>
+</div>

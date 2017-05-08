@@ -1,12 +1,17 @@
+// Angular
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { MdDialog } from '@angular/material';
 
+// Dialogs
 import { AddCandidateDialogComponent } from '../dialog/add-candidate-dialog/add-candidate-dialog.component';
+import { AddRemarksDialogComponent } from '../dialog/add-remarks-dialog/add-remarks-dialog.component';
+import { RemarksDialogComponent } from '../dialog/remarks-dialog/remarks-dialog.component';
+import { DateDialogComponent } from '../dialog/date-dialog/date-dialog.component';
 
 @Component({
-    selector: 'app-candidates',
+    selector: 'candidates',
     templateUrl: './candidates.component.html',
     styleUrls: ['./candidates.component.scss']
 })
@@ -15,9 +20,10 @@ export class CandidatesComponent implements OnInit {
     title = 'Kandidaten';
     selectedValue: string;
     selectedOption: string;
+    selectedDate: string;
 
     cohort = [
-        { value: '0', viewValue: 'Kies...'},
+        { value: '0', viewValue: 'Kies...' },
         { value: '1', viewValue: '2012-2013' },
         { value: '2', viewValue: '2013-2014' },
         { value: '3', viewValue: '2014-2015' },
@@ -44,6 +50,13 @@ export class CandidatesComponent implements OnInit {
 
     protected addCandidateDialogComponent = AddCandidateDialogComponent;
 
+    protected addRemarksDialogComponent = AddRemarksDialogComponent;
+
+    protected remarksDialogComponent = RemarksDialogComponent;
+
+    protected dateDialogComponent = DateDialogComponent;
+
+
     constructor(private router: Router, private http: Http, public dialog: MdDialog) {
         this.http.get('../../assets/data.json')
             .map(response => response.json().candidates)
@@ -53,14 +66,25 @@ export class CandidatesComponent implements OnInit {
     public ngOnInit() {
     }
 
-    protected openDialog() {
-        const dialogRef = this.dialog.open(this.addCandidateDialogComponent);
+    protected openAddRemarkDialog() {
+        const dialogRef = this.dialog.open(this.addRemarksDialogComponent);
         dialogRef.afterClosed().subscribe(result => {
             this.selectedOption = result;
         });
     }
 
-    protected ogChanged(value: string) {
+    protected openRemarksDialog() {
+        const dialogRef = this.dialog.open(this.remarksDialogComponent)
+    }
+
+    protected openDateDialog() {
+        const dialogRef = this.dialog.open(this.dateDialogComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            this.selectedDate = result;
+        });
+    }
+
+    protected onChanged(value: string) {
         console.log(value);
     }
 

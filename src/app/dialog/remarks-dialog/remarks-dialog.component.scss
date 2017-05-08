@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+.exam-components {
+    width: 22vw;
+}
+
+.remark {
+    border-bottom: 1px solid $color-accent-light;
+}
+
+.standard-padding {
+    margin-bottom: 1rem;
+}
+
+.component-title {
+    background-color: $color-primary-light;
+    // color: $color-light;
+    box-shadow: $shadow-menu;
+    height: 40px;
+}

@@ -36,11 +36,17 @@ $shadow-menu: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 5px 5px -3px rgba(0, 0, 0, 0
 }
 
 // Colors
-$primary-text: #212121;
-$secondary-text: #757575;
+$text-color-primary: #212121;
+$text-color-secondary: #757575;
+$text-color-light: #fff;
+
+$color-primary: #1565c0;
+$color-primary-light: #90CAF9;
+$color-accent-light: #ccc;
+$color-light: #fff;
 
 // Fonts
-$primary-font: "Roboto","Helvetica Neue",sans-serif;
+$primary-font-family: "Roboto","Helvetica Neue",sans-serif;
 
 
 
@@ -51,14 +57,17 @@ $primary-font: "Roboto","Helvetica Neue",sans-serif;
 
 body {
     margin: 0;
-    color: $primary-text;
-    font-family: $primary-font;
+    color: $text-color-primary;
+    font-family: $primary-font-family;
 }
 
 .page-padding {
     padding: 15px; 
 }
 
+.clickable:hover {
+    cursor: pointer;
+}
 
 
 // Material design
@@ -85,6 +94,11 @@ body {
 
 .mat-ink-bar {
     background-color: white !important;
+}
+
+.mat-tab-body-content {
+    height: 100vh !important;
+    overflow: hidden;
 }
 
 .mat-input-wrapper {

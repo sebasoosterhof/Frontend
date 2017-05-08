@@ -17,10 +17,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let candidate of candidates" class="candidate">
-            <td data-title="Naam">{{ candidate.name }} {{ candidate.surname }} </td>
-            <td data-title="Studentnummer">{{ candidate.studentnumber }}</td>
-            <td data-title="Opleiding">{{ candidate.education }}</td>
-            <td data-title="Crebo">{{ candidate.crebo }}</td>
+            <td data-title="Naam" class="credentials">{{ candidate.name }} {{ candidate.surname }}</td>
+            <td data-title="Studentnummer" class="credentials">{{ candidate.studentnumber }}</td>
+            <td data-title="Opleiding" class="credentials">{{ candidate.education }}</td>
+            <td data-title="Crebo" class="credentials">{{ candidate.crebo }}</td>
             <td data-title="Cohort">
                 <md-select [(ngModel)]="selectedValue">
                     <md-option *ngFor="let co of cohort" [value]="cohort.value">
@@ -30,13 +30,16 @@
             </td>
             <td data-title="WPT/HBE">
                 <md-input-container>
-                    <input mdInput value="1 t/m 7">
+                    <input mdInput value="1 t/m 7" class="inputs">
                 </md-input-container>
             </td>
             <td data-title="Datum aanvraag PVB">
-                <md-input-container>
-                    <input mdInput value="10-05-2017">
-                </md-input-container>
+                <material-datepicker [(date)]="yourModelDate"></material-datepicker> 
+                <!--<button (click)="openDateDialog()">Selecteer een datum</button>-->
+
+                <!--<md-input-container>
+                    <input mdInput value="10-05-2017" class="inputs">
+                </md-input-container>-->
             </td>
             <td data-title="Akkoord PVB">
                 <md-select [(ngModel)]="selectedValue">
@@ -47,16 +50,19 @@
             </td>
             <td data-title="PVB">
                 <md-input-container>
-                    <input mdInput value="1 t/m 4">
+                    <input mdInput value="1 t/m 4" class="inputs">
                 </md-input-container>
             </td>
             <td data-title="Datum OG">
-                <md-input-container>
-                    <input mdInput value="20-05-2017">
-                </md-input-container>
+                <!--<button (click)="openDateDialog()">Selecteer een datum</button>-->
+                 <material-datepicker [(date)]="yourModelDate"></material-datepicker>
+
+                <!--<md-input-container>
+                    <input mdInput value="20-05-2017" class="inputs">
+                </md-input-container>-->
             </td>
             <td data-title="OG">
-                <md-select [(ngModel)]="selectedValue" (change)="ogChanged(selectedValue)">
+                <md-select [(ngModel)]="selectedValue" (change)="onChanged(selectedValue)">
                     <md-option *ngFor="let o of og" [value]="og.value">
                         {{ o.viewValue }}
                     </md-option>
@@ -66,10 +72,10 @@
                 <!--<button md-button (click)="openDialog()"><md-icon>note_add</md-icon></button>-->
                 <div fxLayout="row" fxLayoutAlign="space-around center">
                     <div fxFlex="50" fxFlexOffset="10" fxFlexAlign="center center">
-                        <md-icon (click)="openDialog()" class="add-remark">note_add</md-icon>
+                        <md-icon (click)="openAddRemarkDialog()" class="clickable">insert_comment</md-icon>
                     </div>
                     <div fxFlex fxFlexAlign="center center">
-                        <md-icon>note_add</md-icon>
+                        <md-icon (click)="openRemarksDialog()" class="clickable">feedback</md-icon>
                     </div>
                 </div>
             </td>
