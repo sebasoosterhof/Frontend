@@ -22,8 +22,8 @@
             <td data-title="Opleiding" class="credentials">{{ candidate.education }}</td>
             <td data-title="Crebo" class="credentials">{{ candidate.crebo }}</td>
             <td data-title="Cohort">
-                <md-select [(ngModel)]="selectedValue">
-                    <md-option *ngFor="let co of cohort" [value]="cohort.value">
+                <md-select [(ngModel)]="selectedCohort">
+                    <md-option *ngFor="let co of cohort" [value]="co.value">
                         {{ co.viewValue }}
                     </md-option>
                 </md-select>
@@ -34,16 +34,11 @@
                 </md-input-container>
             </td>
             <td data-title="Datum aanvraag PVB">
-                <material-datepicker [(date)]="yourModelDate"></material-datepicker> 
-                <!--<button (click)="openDateDialog()">Selecteer een datum</button>-->
-
-                <!--<md-input-container>
-                    <input mdInput value="10-05-2017" class="inputs">
-                </md-input-container>-->
+                <material-datepicker [(date)]="yourModelDate"></material-datepicker>
             </td>
             <td data-title="Akkoord PVB">
-                <md-select [(ngModel)]="selectedValue">
-                    <md-option *ngFor="let p of pvb" [value]="pvb.value">
+                <md-select [(ngModel)]="selectedPVB" (change)="onPVBChanged(selectedPVB)" name="pvb" [style.background-color]="pvbBGColor" [style.color]="pvbFontColor">
+                    <md-option *ngFor="let p of pvb" [value]="p.value">
                         {{ p.viewValue }}
                     </md-option>
                 </md-select>
@@ -54,22 +49,16 @@
                 </md-input-container>
             </td>
             <td data-title="Datum OG">
-                <!--<button (click)="openDateDialog()">Selecteer een datum</button>-->
-                 <material-datepicker [(date)]="yourModelDate"></material-datepicker>
-
-                <!--<md-input-container>
-                    <input mdInput value="20-05-2017" class="inputs">
-                </md-input-container>-->
+                <material-datepicker [(date)]="yourModelDate"></material-datepicker>
             </td>
             <td data-title="OG">
-                <md-select [(ngModel)]="selectedValue" (change)="onChanged(selectedValue)">
-                    <md-option *ngFor="let o of og" [value]="og.value">
-                        {{ o.viewValue }}
+                <md-select [(ngModel)]="selectedOG" (change)="onOGChanged(selectedValue)" name="og" [style.background-color]="ogBGColor" [style.color]="ogFontColor">
+                    <md-option *ngFor="let o of og" [value]="o.value">
+                        {{o.viewValue}}
                     </md-option>
                 </md-select>
             </td>
             <td data-title="Opmerkingen">
-                <!--<button md-button (click)="openDialog()"><md-icon>note_add</md-icon></button>-->
                 <div fxLayout="row" fxLayoutAlign="space-around center">
                     <div fxFlex="50" fxFlexOffset="10" fxFlexAlign="center center">
                         <md-icon (click)="openAddRemarkDialog()" class="clickable">insert_comment</md-icon>
@@ -80,79 +69,5 @@
                 </div>
             </td>
         </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--New Candidate 
-        <tr class="new-candidate">
-            <td data-title="Naam">
-                <md-input-container>
-                    <input mdInput placeholder="Naam" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Studentnummer">
-                <md-input-container>
-                    <input mdInput placeholder="Studentnummer" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Opleiding">
-                <md-input-container>
-                    <input mdInput placeholder="Opleiding" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Crebo">
-                <md-input-container>
-                    <input mdInput placeholder="Crebo" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Cohort">
-                <md-input-container>
-                    <input mdInput placeholder="Cohort" value="">
-                </md-input-container>
-            </td>
-            <td data-title="WPT/HBE">
-                <md-input-container>
-                    <input mdInput placeholder="WPT/HBE" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Datum aanvraag PVB">
-                <md-input-container>
-                    <input mdInput placeholder="Datum PVB" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Akkoord PVB">
-                <md-select placeholder="Akkoord">
-                    <md-option *ngFor="let p of pvb" [value]="pvb.value">
-                        {{ p.viewValue }}
-                    </md-option>
-                </md-select>
-            </td>
-            <td data-title="PVB">
-                <md-input-container>
-                    <input mdInput placeholder="PVB" value="">
-                </md-input-container>
-            </td>
-            <td data-title="Datum OG">
-                <md-input-container>
-                    <input mdInput placeholder="Datum OG" value="">
-                </md-input-container>
-            </td>
-            <td data-title="OG">
-                <md-select placeholder="Ontwikkelgesprek">
-                    <md-option *ngFor="let o of og" [value]="og.value">
-                        {{ o.viewValue }}
-                    </md-option>
-                </md-select>
-            </td>
-        </tr>-->
     </tbody>
 </table>

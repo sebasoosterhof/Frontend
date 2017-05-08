@@ -18,9 +18,15 @@ import { DateDialogComponent } from '../dialog/date-dialog/date-dialog.component
 export class CandidatesComponent implements OnInit {
     candidates: Array<any>;
     title = 'Kandidaten';
-    selectedValue: string;
     selectedOption: string;
-    selectedDate: string;
+    selectedPVB: string;
+    selectedOG: string;
+    selectedCohort: string;
+
+    pvbBGColor: string;
+    pvbFontColor: string;
+    ogBGColor: string;
+    ogFontColor: string;
 
     cohort = [
         { value: '0', viewValue: 'Kies...' },
@@ -64,6 +70,9 @@ export class CandidatesComponent implements OnInit {
     }
 
     public ngOnInit() {
+        this.selectedCohort = '0';
+        this.selectedPVB = '0';
+        this.selectedOG = '0';
     }
 
     protected openAddRemarkDialog() {
@@ -74,18 +83,44 @@ export class CandidatesComponent implements OnInit {
     }
 
     protected openRemarksDialog() {
-        const dialogRef = this.dialog.open(this.remarksDialogComponent)
+        const dialogRef = this.dialog.open(this.remarksDialogComponent);
     }
 
-    protected openDateDialog() {
-        const dialogRef = this.dialog.open(this.dateDialogComponent);
-        dialogRef.afterClosed().subscribe(result => {
-            this.selectedDate = result;
-        });
+    protected onPVBChanged(value: string) {
+        if (this.selectedPVB === '0') {
+            this.pvbBGColor = '';
+        }
+        if (this.selectedPVB === '1') {
+            this.pvbFontColor = 'white';
+            this.pvbBGColor = 'crimson';
+        }
+        if (this.selectedPVB === '2') {
+            this.pvbBGColor = 'lawngreen';
+        }
+        if (this.selectedPVB === '3') {
+            this.pvbBGColor = 'skyblue';
+        }
+        if (this.selectedPVB === '4') {
+            this.pvbBGColor = 'darkslateblue';
+        }
     }
 
-    protected onChanged(value: string) {
-        console.log(value);
+    protected onOGChanged(value: string) {
+        if (this.selectedOG === '0') {
+            this.ogBGColor = '';
+        }
+        if (this.selectedOG === '1') {
+            this.ogBGColor = 'lawngreen';
+        }
+        if (this.selectedOG === '2') {
+            this.ogBGColor = 'darkseagreen';
+        }
+        if (this.selectedOG === '3') {
+            this.ogBGColor = 'skyblue';
+        }
+        if (this.selectedOG === '4') {
+            this.ogBGColor = 'palegoldenrod';
+        }
     }
 
 
