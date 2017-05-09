@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 
 @Component({
     selector: 'graduates',
@@ -7,10 +9,16 @@ import { MdDialog, MdDialogRef } from '@angular/material';
     styleUrls: ['./graduates.component.scss']
 })
 export class GraduatesComponent {
+    graduates: Array<any>;
 
     selectedOption: string;
 
-    constructor(public dialog: MdDialog) { }
+    constructor(private router: Router, private http: Http, public dialog: MdDialog) {
+        // Graduates
+        this.http.get('../../assets/data.json')
+            .map(response => response.json().graduates)
+            .subscribe(res => this.graduates = res);
+    }
 
 }
 

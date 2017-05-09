@@ -7,7 +7,8 @@
             "studentnumber": "243102",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
-            "crebo": "95311"
+            "crebo": "95311",
+            "exit": false
         },
         {
             "id": 2,
@@ -16,7 +17,8 @@
             "studentnumber": "102493",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
-            "crebo": "95311"
+            "crebo": "95311",
+            "exit": false
         },
         {
             "id": 3,
@@ -25,7 +27,8 @@
             "studentnumber": "211309",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
-            "crebo": "95311"
+            "crebo": "95311",
+            "exit": false
         },
         {
             "id": 4,
@@ -34,7 +37,53 @@
             "studentnumber": "209268",
             "cohort": "2014-2015",
             "education": "Applicatieontwikkeling",
-            "crebo": "95311"
+            "crebo": "95311",
+            "exit": false
+        },
+        {
+            "id": 5,
+            "name": "Henk",
+            "surname": "van der Wal",
+            "studentnumber": "213408",
+            "cohort": "2014-2015",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311",
+            "exit": true
+        },
+        {
+            "id": 6,
+            "name": "Frans",
+            "surname": "Tuinstra",
+            "studentnumber": "909903",
+            "cohort": "2014-2015",
+            "education": "ICT-Beheer",
+            "crebo": "95311",
+            "exit": false
+        }
+
+    ],
+
+    "graduates": [
+        {
+            "id": 1,
+            "name": "Joeri",
+            "surname": "de Wagt",
+            "studentnumber": "234194",
+            "cohort": "2013-2014",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311",
+            "graduatedDate": "12-07-2016"
+            
+        },
+        {
+            "id": 2,
+            "name": "Simon",
+            "surname": "Antonides",
+            "studentnumber": "106423",
+            "cohort": "2013-2014",
+            "education": "Applicatieontwikkeling",
+            "crebo": "95311",
+            "graduatedDate": "01-06-2016"
         }
     ]
 }

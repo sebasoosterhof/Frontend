@@ -1,5 +1,9 @@
 @import '../../styles.scss';
 
+.title {
+    margin: 2rem;
+}
+
 .fab-button {
     position: absolute;
     z-index: 1000;  
@@ -8,9 +12,13 @@
 }
 
 .menu-button {
-    margin-left: 90rem;
+    right: 3rem;
+    position: absolute;
 }
 
-.title {
-    margin: 2rem;
+.user {
+    position: absolute;
+    right: 2.5rem;
+    font-size: 1.25rem;
+    margin-top: 1rem;
 }

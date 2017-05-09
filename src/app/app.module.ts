@@ -21,8 +21,9 @@ import { GraduatesComponent } from './graduates/graduates.component';
 // Dialogs
 import { AddCandidateDialogComponent } from './dialog/add-candidate-dialog/add-candidate-dialog.component';
 import { AddRemarksDialogComponent } from './dialog/add-remarks-dialog/add-remarks-dialog.component';
+import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
+import { EditCandidateDialogComponent } from './dialog/edit-candidate-dialog/edit-candidate-dialog.component';
 import { RemarksDialogComponent } from './dialog/remarks-dialog/remarks-dialog.component';
-import { DateDialogComponent } from './dialog/date-dialog/date-dialog.component';
 
 // Datepicker
 import { DatepickerModule } from 'angular2-material-datepicker';
@@ -36,10 +37,15 @@ import { DatepickerModule } from 'angular2-material-datepicker';
     GraduatesComponent,
     AddCandidateDialogComponent,
     AddRemarksDialogComponent,
-    RemarksDialogComponent,
-    DateDialogComponent
+    ConfirmationDialogComponent,
+    EditCandidateDialogComponent,
+    RemarksDialogComponent
   ],
-  entryComponents: [AddCandidateDialogComponent, AddRemarksDialogComponent, RemarksDialogComponent, DateDialogComponent],
+  entryComponents: [AddCandidateDialogComponent,
+    AddRemarksDialogComponent,
+    ConfirmationDialogComponent,
+    EditCandidateDialogComponent,
+    RemarksDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,
