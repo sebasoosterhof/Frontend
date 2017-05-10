@@ -50,21 +50,20 @@
                     <ng-container *ngIf="!candidate.exit">
                         <td data-title="WPT/HBE" class="padding-top padding-left" ng-class="(candidate.exit) ? 'exit-student' : ''">
                             1
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             2
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             3
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             4
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             5
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             6
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             7
-                            <md-checkbox color="primary"></md-checkbox>
-                            <span mdTooltip="03-05-2017: HBE 1 onvoldoende, herkansing aangevraagd. 
-                                             05-05-2017: HBE 1 voldoende op voorbehoud." class="tooltip">
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
+                            <span mdTooltip="05-05-2017: HBE 1 voldoende op voorbehoud." class="tooltip">
                                 <md-icon *ngIf="candidate.id === 1" (click)="openRemarksDialog()" class="remark clickable" style="right:54.5rem;">feedback</md-icon>
                             </span>
                         </td>
@@ -81,14 +80,14 @@
                         </td>
                         <td data-title="PVB" class="padding-top padding-left">
                             1
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             2
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             3
-                            <md-checkbox color="primary"></md-checkbox>
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
                             4
-                            <md-checkbox color="primary"></md-checkbox>
-                            <span mdTooltip="PVB 4 nog niet ingeleverd.">
+                            <md-checkbox color="primary" class="clickable"></md-checkbox>
+                            <span mdTooltip="15-05-2017: PVB 4 nog niet ingeleverd.">
                                 <md-icon *ngIf="candidate.id === 1" (click)="openRemarksDialog()" class="remark clickable" style="right:24.2rem;">feedback</md-icon>                            
                             </span>
                         </td>
@@ -112,7 +111,7 @@
 
                                 </div>
                                 <div fxFlex fxFlexAlign="center center">
-                                    <span mdTooltip="Bekijk alle opmerkingen" class="tooltip">                            
+                                    <span *ngIf="candidate.id === 1" mdTooltip="Bekijk alle opmerkingen" class="tooltip">                            
                                         <md-icon (click)="openRemarksDialog()" class="clickable">feedback</md-icon>
                                     </span>
                                 </div>

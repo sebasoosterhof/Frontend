@@ -24,9 +24,17 @@ export class CandidatesComponent implements OnInit {
     selectedOG: string;
 
     pvbBGColor: string;
-    pvbFontColor: string;
     ogBGColor: string;
-    ogFontColor: string;
+
+
+    private statusColorUndefined = '#fff';
+    private statusColorYes = '#81C784';
+    private statusColorNo = '#EF9A9A';
+    private statusColorRequested = '#81C784';
+    private statusColorPlanned = '#4DB6AC';
+    private statusColorAchieved = '#81D4FA';
+    private statusColorSlidingThrough = '#FFF176';
+    private statusColorDeterminationList=  '#64B5F6';
 
 
 
@@ -88,41 +96,37 @@ export class CandidatesComponent implements OnInit {
 
     protected onPVBChanged(value: string) {
         if (this.selectedPVB === '0') {
-            this.pvbBGColor = '';
-            this.pvbFontColor = 'lightgrey';
+            this.pvbBGColor = this.statusColorUndefined;
         }
         if (this.selectedPVB === '1') {
-            this.pvbFontColor = 'white';
-            this.pvbBGColor = 'crimson';
+            this.pvbBGColor = this.statusColorNo;
         }
         if (this.selectedPVB === '2') {
-            this.pvbBGColor = 'lawngreen';
+            this.pvbBGColor = this.statusColorYes;
         }
         if (this.selectedPVB === '3') {
-            this.pvbBGColor = 'skyblue';
+            this.pvbBGColor = this.statusColorAchieved;
         }
         if (this.selectedPVB === '4') {
-            this.pvbFontColor = 'white';
-            this.pvbBGColor = 'darkslateblue';
+            this.pvbBGColor = this.statusColorDeterminationList;
         }
     }
 
     protected onOGChanged(value: string) {
         if (this.selectedOG === '0') {
-            this.ogBGColor = '';
-            this.pvbFontColor = 'lightgrey';
+            this.ogBGColor = this.statusColorUndefined;
         }
         if (this.selectedOG === '1') {
-            this.ogBGColor = 'lawngreen';
+            this.ogBGColor = this.statusColorRequested;
         }
         if (this.selectedOG === '2') {
-            this.ogBGColor = 'darkseagreen';
+            this.ogBGColor = this.statusColorPlanned;
         }
         if (this.selectedOG === '3') {
-            this.ogBGColor = 'skyblue';
+            this.ogBGColor = this.statusColorAchieved;
         }
         if (this.selectedOG === '4') {
-            this.ogBGColor = 'palegoldenrod';
+            this.ogBGColor = this.statusColorSlidingThrough;
         }
     }
 

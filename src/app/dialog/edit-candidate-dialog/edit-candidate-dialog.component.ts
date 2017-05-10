@@ -16,7 +16,7 @@ export class EditCandidateDialogComponent {
   constructor(public dialogRef: MdDialogRef<EditCandidateDialogComponent>, public dialog: MdDialog, ) { }
 
 
-  protected openConfirmationkDialog() {
+  protected openConfirmationDialog() {
     const dialogRef = this.dialog.open(this.confirmationDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
