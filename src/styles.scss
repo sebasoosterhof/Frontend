@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+///////////////////////////////////
+// Variables
+///////////////////////////////////
+
+// Shadows
+$shadow-1dp: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+$shadow-1dp-half: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+$shadow-2dp: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+$shadow-3dp: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+$shadow-4dp: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+$shadow-5dp: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+$shadow-menu: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
+
+// Shadow classes
+.shadow-1dp {
+    box-shadow: $shadow-1dp;
+}
+.shadow-1dp-half {
+    box-shadow: $shadow-1dp-half;
+}
+.shadow-2dp {
+    box-shadow: $shadow-2dp;
+}
+.shadow-3dp {
+    box-shadow: $shadow-3dp;
+}
+.shadow-4dp {
+    box-shadow: $shadow-4dp;
+}
+.shadow-5dp {
+    box-shadow: $shadow-5dp;
+}
+
+// Font Colors
+$text-color-primary: #212121;
+$text-color-secondary: #757575;
+$text-color-light: #fff;
+
+// Status Colors
+$status-color-undefined: #fff; // kies optie
+$status-color-yes: #81C784; // ja optie
+$status-color-no: #EF9A9A; // nee optie
+$status-color-requested: #81C784; // aangevraagd optie
+$status-color-planned: #4DB6AC; // ingepland optie
+$status-color-achieved: #81D4FA; // gehaald optie
+$status-color-sliding-through: #FFF176; // doorschuiven optie
+$status-color-determination-list: #64B5F6; // vaststellingslijst optie
+
+
+
+// Misc colors
+$color-primary: #1565c0; // 800 material blue
+$color-primary-light: #90CAF9; // 200 material blue
+$color-accent-light: #ccc;
+$color-light: #fff;
+
+// Fonts
+$primary-font-family: "Roboto","Helvetica Neue",sans-serif;
+
+
+
+
+
+
+
+
+body {
+    margin: 0;
+    color: $text-color-primary;
+    font-family: $primary-font-family;
+}
+
+.page-padding {
+    padding: 15px; 
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+
+// Material design overrides
+.mat-tab-header {
+    background-color: $color-primary;
+    box-shadow: $shadow-menu;
+    border-bottom: none !important;
+}
+
+.mat-tab-label-container {
+    margin-left: 1rem;
+    .mat-tab-label {
+        color: $color-light;
+        font-size: 1.2rem !important;
+    }
+}
+
+.mat-tab-label-active {
+    opacity: 1 !important;
+}
+
+.mat-tab-label:focus {
+    background-color: $color-primary !important;
+}
+
+.mat-ink-bar {
+    background-color: $color-light !important;
+}
+
+.mat-input-wrapper {
+    margin: 0 !important;
+}

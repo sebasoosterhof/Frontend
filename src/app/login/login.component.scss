@@ -1,0 +1,24 @@
+@import '../../styles.scss';
+
+.wrapper {
+    background-color: $color-primary;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login-form {
+    position: absolute;
+    // text-align: center;
+    background-color: $color-light;
+    width: 35vw;
+    height: 25vh;
+    box-shadow: $shadow-menu;
+}
+
+.standard-padding {
+    padding-bottom: 2rem;
+}
+
+.input {
+    margin-top: 1.5rem;
+}

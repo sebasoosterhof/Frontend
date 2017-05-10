@@ -1,0 +1,23 @@
+<h1 md-dialog-title>Voeg een opmerking toe</h1>
+<div md-dialog-content>Selecteer een onderdeel waarbij je een opmerking toe wilt voegen.</div>
+<div md-dialog-actions>
+
+    <div fxLayout="column" class="add-remark">
+
+        <div fxLayout="row">
+            <md-select [(ngModel)]="selectedValue">
+                <md-option *ngFor="let ec of examComponents" [value]="examComponents.value">
+                    {{ ec.viewValue }}
+                </md-option>
+            </md-select>
+        </div>
+
+        <div fxLayout="row">
+            <textarea class="remark-input"></textarea>
+        </div>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="end center">
+    <button md-button>Annuleren</button>
+    <button md-raised-button color="primary">Opslaan</button>
+</div>

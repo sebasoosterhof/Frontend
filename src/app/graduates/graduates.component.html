@@ -1,0 +1,22 @@
+<table id="table" class="table table-hover table-responsive-vertical">
+    <thead>
+        <tr>
+            <th class="padding-left">Naam</th>
+            <th class="padding-left">Studentnummer</th>
+            <th class="padding-left">Opleiding</th>
+            <th class="padding-left">Crebo</th>
+            <th class="padding-left">Cohort</th>
+            <th class="padding-left">Geslaagd op</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let graduate of graduates" class="graduate">
+            <td data-title="Naam" class="padding-left">{{ graduate.name }} {{ graduate.surname }}</td>
+            <td data-title="Studentnummer" class="padding-left">{{ graduate.studentnumber }}</td>
+            <td data-title="Opleiding" class="padding-left">{{ graduate.education }}</td>
+            <td data-title="Crebo" class="padding-left">{{ graduate.crebo }}</td>
+            <td data-title="Cohort" class="padding-left">{{ graduate.cohort }}</td>
+            <td data-title="Geslaagd op" class="padding-left">{{ graduate.graduatedDate }}</td>
+        </tr>
+    </tbody>
+</table>
