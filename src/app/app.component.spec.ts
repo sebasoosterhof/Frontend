@@ -1,3 +1,9 @@
+// ======================================================================
+// Author: Sebastian Oosterhof
+// Description: Web application for exam application
+// Version: 1.0
+// ======================================================================
+
 import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';

@@ -42,8 +42,7 @@ export class CandidatesComponent implements OnInit {
         { value: '0', viewValue: 'Kies...' },
         { value: '1', viewValue: 'Nee' },
         { value: '2', viewValue: 'Ja' },
-        { value: '3', viewValue: 'Gehaald' },
-        { value: '4', viewValue: 'Vaststellingslijst' }
+        { value: '3', viewValue: 'Vaststellingslijst' }
     ];
 
     ogs = [
