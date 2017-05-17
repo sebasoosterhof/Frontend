@@ -9,7 +9,7 @@ import { CandidatesComponent } from '../candidates/candidates.component';
 import { GraduatesComponent } from '../graduates/graduates.component';
 
 // Dialogs
-import { AddCandidateDialogComponent } from '../dialog/add-candidate-dialog/add-candidate-dialog.component';
+import { AddCandidateDialogComponent } from '../../dialogs/add-candidate-dialog/add-candidate-dialog.component';
 
 
 

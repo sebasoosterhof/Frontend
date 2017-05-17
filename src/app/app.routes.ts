@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OverviewComponent } from './overview/overview.component';
-import { LoginComponent} from './login/login.component';
+import { OverviewComponent } from './pages/overview/overview.component';
+import { LoginComponent} from './pages/login/login.component';
 
 
 export const router: Routes = [

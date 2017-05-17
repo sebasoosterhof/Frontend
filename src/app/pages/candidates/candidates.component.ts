@@ -5,10 +5,10 @@ import { Http } from '@angular/http';
 import { MdDialog } from '@angular/material';
 
 // Dialogs
-import { AddCandidateDialogComponent } from '../dialog/add-candidate-dialog/add-candidate-dialog.component';
-import { AddRemarksDialogComponent } from '../dialog/add-remarks-dialog/add-remarks-dialog.component';
-import { RemarksDialogComponent } from '../dialog/remarks-dialog/remarks-dialog.component';
-import { EditCandidateDialogComponent } from '../dialog/edit-candidate-dialog/edit-candidate-dialog.component';
+import { AddCandidateDialogComponent } from '../../dialogs/add-candidate-dialog/add-candidate-dialog.component';
+import { AddRemarksDialogComponent } from '../../dialogs/add-remarks-dialog/add-remarks-dialog.component';
+import { RemarksDialogComponent } from '../../dialogs/remarks-dialog/remarks-dialog.component';
+import { EditCandidateDialogComponent } from '../../dialogs/edit-candidate-dialog/edit-candidate-dialog.component';
 
 
 @Component({

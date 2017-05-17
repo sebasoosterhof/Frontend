@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { MdDialogRef, MdDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
-  selector: 'remarks-dialog',
-  templateUrl: './remarks-dialog.component.html',
-  styleUrls: ['./remarks-dialog.component.scss']
+  selector: 'edit-candidate-dialog',
+  templateUrl: './edit-candidate-dialog.component.html',
+  styleUrls: ['./edit-candidate-dialog.component.scss']
 })
-export class RemarksDialogComponent {
+export class EditCandidateDialogComponent {
   selectedOption: string;
 
   protected confirmationDialogComponent = ConfirmationDialogComponent;
 
 
-  constructor(public dialogRef: MdDialogRef<RemarksDialogComponent>, public dialog: MdDialog, ) { }
+  constructor(public dialogRef: MdDialogRef<EditCandidateDialogComponent>, public dialog: MdDialog, ) { }
 
 
   protected openConfirmationDialog() {
@@ -22,4 +22,5 @@ export class RemarksDialogComponent {
       this.selectedOption = result;
     });
   }
+
 }

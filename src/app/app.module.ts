@@ -13,17 +13,17 @@ import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
 // Pages
-import { LoginComponent } from './login/login.component';
-import { OverviewComponent } from './overview/overview.component';
-import { CandidatesComponent } from './candidates/candidates.component';
-import { GraduatesComponent } from './graduates/graduates.component';
+import { LoginComponent } from './pages/login/login.component';
+import { OverviewComponent } from './pages/overview/overview.component';
+import { CandidatesComponent } from './pages/candidates/candidates.component';
+import { GraduatesComponent } from './pages/graduates/graduates.component';
 
 // Dialogs
-import { AddCandidateDialogComponent } from './dialog/add-candidate-dialog/add-candidate-dialog.component';
-import { AddRemarksDialogComponent } from './dialog/add-remarks-dialog/add-remarks-dialog.component';
-import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
-import { EditCandidateDialogComponent } from './dialog/edit-candidate-dialog/edit-candidate-dialog.component';
-import { RemarksDialogComponent } from './dialog/remarks-dialog/remarks-dialog.component';
+import { AddCandidateDialogComponent } from './dialogs/add-candidate-dialog/add-candidate-dialog.component';
+import { AddRemarksDialogComponent } from './dialogs/add-remarks-dialog/add-remarks-dialog.component';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
+import { EditCandidateDialogComponent } from './dialogs/edit-candidate-dialog/edit-candidate-dialog.component';
+import { RemarksDialogComponent } from './dialogs/remarks-dialog/remarks-dialog.component';
 
 // Datepicker
 import { DatepickerModule } from 'angular2-material-datepicker';
