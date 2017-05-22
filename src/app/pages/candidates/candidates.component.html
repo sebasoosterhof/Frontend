@@ -1,4 +1,4 @@
-<table id="table" class="table table-hover table-responsive-vertical">
+<!--<table id="table" class="table table-hover table-responsive-vertical">
     <thead>
         <tr>
             <th></th>
@@ -17,9 +17,9 @@
         </tr>
     </thead>
     <tbody>
-        <ng-container *ngFor="let candidate of candidates">
-            <!-- Candidate.exit -->
-            <ng-container *ngIf="candidate.exit">
+        <ng-container *ngFor="let candidate of candidates">-->
+<!-- Candidate.exit -->
+<!--<ng-container *ngIf="candidate.exit">
                 <tr class="padding-top exit-student">
                     <td data-title="Wijzig" class="padding-top">
                         <span mdTooltip="Wijzig kandidaat eigenschappen" mdTooltipPosition="right">
@@ -32,10 +32,10 @@
                     <td data-title="Crebo" class="padding-top padding-left">{{ candidate.crebo }}</td>
                     <td data-title="Cohort" class="padding-top padding-left">{{ candidate.cohort }}</td>
                     <td class="padding-top padding-left"><span class="exit-remark">Deze student is gestopt met de opleiding.</span></td>
-            </ng-container>
+            </ng-container>-->
 
-            <!-- Not candidate.exit -->
-            <ng-container *ngIf="!candidate.exit">
+<!-- Not candidate.exit -->
+<!--<ng-container *ngIf="!candidate.exit">
                 <tr class="padding-top">
                     <td data-title="Wijzig" class="padding-top">
                         <span mdTooltip="Wijzig de kandidaat" mdTooltipPosition="right">
@@ -88,7 +88,7 @@
                             4
                             <md-checkbox color="primary" class="clickable"></md-checkbox>
                             <span mdTooltip="15-05-2017: PVB 4 nog niet ingeleverd.">
-                                <md-icon *ngIf="candidate.id === 10" (click)="openRemarksDialog()" class="remark clickable" style="right:24.2rem;">feedback</md-icon>                            
+                                <md-icon *ngIf="candidate.id === 10" (click)="openRemarksDialog()" class="remark clickable" style="right:24.2rem;">feedback</md-icon>
                             </span>
                         </td>
                         <td data-title="Datum OG" class="padding-top">
@@ -111,7 +111,7 @@
 
                                 </div>
                                 <div fxFlex fxFlexAlign="center center">
-                                    <span *ngIf="candidate.id === 10" mdTooltip="Bekijk alle opmerkingen" class="tooltip">                            
+                                    <span *ngIf="candidate.id === 10" mdTooltip="Bekijk alle opmerkingen" class="tooltip">
                                         <md-icon (click)="openRemarksDialog()" class="clickable">feedback</md-icon>
                                     </span>
                                 </div>
@@ -125,4 +125,120 @@
             </ng-container>
         </ng-container>
     </tbody>
+</table>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<table id="table" class="table table-hover table-responsive-vertical">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Naam</th>
+      <th>Studentnummer</th>
+      <!--<th>Opleiding</th>
+      <th class="padding-left">Crebo</th>
+      <th class="padding-left">Cohort</th>
+      <th class="padding-left">WPT/HBE</th>
+      <th>Aanvraag PVB</th>
+      <th>Akkoord PVB</th>
+      <th class="padding-left">PVB</th>
+      <th>Aanvraag OG</th>
+      <th>OG</th>
+      <th>Opmerkingen</th>-->
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let student of students">
+      <tr class="padding-top">
+        <td data-title="Wijzig" class="padding-top">
+          <span mdTooltip="Wijzig de kandidaat" mdTooltipPosition="right">
+            <md-icon (click)="openEditCandidateDialog()" class="clickable">edit</md-icon>
+          </span>
+        </td>
+        <td data-title="Naam" class="padding-top padding-left">{{ student.firstname }} {{ student.lastname }}</td>
+        <td data-title="Studentnummer" class="padding-top padding-left">{{ student.studentnumber }}</td>
+        <!--<td data-title="Opleiding" class="padding-top">{{ candidate?.education }}</td>
+        <td data-title="Crebo" class="padding-top padding-left">{{ candidate?.crebo }}</td>
+        <td data-title="Cohort" class="padding-top padding-left">{{ candidate?.cohort }}</td>-->
+        <!--<td data-title="WPT/HBE" class="padding-top padding-left" ng-class="(candidate.exit) ? 'exit-student' : ''">
+          1
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          2
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          3
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          4
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          5
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          6
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          7
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          <span mdTooltip="05-05-2017: HBE 1 voldoende op voorbehoud." class="tooltip">
+              <md-icon *ngIf="candidate.id === 10" (click)="openRemarksDialog()" class="remark clickable" style="right:54.5rem;">feedback</md-icon>
+            </span>
+        </td>-->
+        <!--<td data-title="Datum aanvraag PVB" class="padding-top">
+          <material-datepicker [(date)]="yourModelDate"></material-datepicker>
+        </td>
+        <td data-title="Akkoord PVB">
+          <md-select [(ngModel)]="selectedPVB" (change)="onPVBChanged(selectedPVB)" name="pvb" [style.background-color]="pvbBGColor"
+            [style.color]="pvbFontColor">
+            <md-option *ngFor="let pvb of pvbs" [value]="pvb.value">
+              {{ pvb.viewValue }}
+            </md-option>
+          </md-select>
+        </td>
+        <td data-title="PVB" class="padding-top padding-left">
+          1
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          2
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          3
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          4
+          <md-checkbox color="primary" class="clickable"></md-checkbox>
+          <span mdTooltip="15-05-2017: PVB 4 nog niet ingeleverd.">
+              <md-icon *ngIf="candidate.id === 10" (click)="openRemarksDialog()" class="remark clickable" style="right:24.2rem;">feedback</md-icon>
+            </span>
+        </td>
+        <td data-title="Datum OG" class="padding-top">
+          <material-datepicker [(date)]="yourModelDate"></material-datepicker>
+        </td>
+        <td data-title="OG">
+          <md-select [(ngModel)]="selectedOG" (change)="onOGChanged(selectedValue)" name="og" [style.background-color]="ogBGColor"
+            [style.color]="ogFontColor">
+            <md-option *ngFor="let og of ogs" [value]="og.value">
+              {{og.viewValue}}
+            </md-option>
+          </md-select>
+        </td>
+        <td data-title="Opmerkingen">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex="50" fxFlexOffset="10" fxFlexAlign="center center">
+              <span mdTooltip="Voeg een opmerking toe">
+                  <md-icon (click)="openAddRemarkDialog()" class="clickable">insert_comment</md-icon>
+                </span>
+
+            </div>
+            <div fxFlex fxFlexAlign="center center">
+              <span *ngIf="candidate.id === 10" mdTooltip="Bekijk alle opmerkingen" class="tooltip">
+                  <md-icon (click)="openRemarksDialog()" class="clickable">feedback</md-icon>
+                </span>
+            </div>
+          </div>
+        </td>-->
+      </tr>
+    </ng-container>
+  </tbody>
 </table>

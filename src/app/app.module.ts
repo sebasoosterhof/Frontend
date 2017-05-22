@@ -12,6 +12,12 @@ import { MaterialModule } from '@angular/material';
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
+// Controllers
+import { ExamApplicationController } from './controllers/exam-application.controller';
+
+// Services
+import { ExamApplicationService } from './services/exam-application.service';
+
 // Pages
 import { LoginComponent } from './pages/login/login.component';
 import { OverviewComponent } from './pages/overview/overview.component';
@@ -56,7 +62,9 @@ import { DatepickerModule } from 'angular2-material-datepicker';
     MaterialModule.forRoot(),
     DatepickerModule
   ],
-  providers: [],
+  providers: [
+    ExamApplicationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
