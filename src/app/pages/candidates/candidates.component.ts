@@ -7,6 +7,9 @@ import { MdDialog } from '@angular/material';
 // Services
 import { ExamApplicationService } from '../../services/exam-application.service';
 
+// Controllers
+import { ExamApplicationController } from '../../controllers/exam-application.controller';
+
 // Dialogs
 import { AddCandidateDialogComponent } from '../../dialogs/add-candidate-dialog/add-candidate-dialog.component';
 import { AddRemarksDialogComponent } from '../../dialogs/add-remarks-dialog/add-remarks-dialog.component';
@@ -14,7 +17,8 @@ import { RemarksDialogComponent } from '../../dialogs/remarks-dialog/remarks-dia
 import { EditCandidateDialogComponent } from '../../dialogs/edit-candidate-dialog/edit-candidate-dialog.component';
 
 // Interfaces
-import { Student } from '../../interfaces/student';
+import { ExamLine } from '../../interfaces/exam-line';
+
 
 @Component({
   selector: 'candidates',
@@ -23,14 +27,11 @@ import { Student } from '../../interfaces/student';
 })
 export class CandidatesComponent implements OnInit {
   title = 'Kandidaten';
-
-  candidates: Array<any>;
-  students: Student[];
+  candidates: ExamLine[];
 
   selectedOption: string;
   selectedPVB: string;
   selectedOG: string;
-
   pvbBGColor: string;
   ogBGColor: string;
 
@@ -43,7 +44,6 @@ export class CandidatesComponent implements OnInit {
   private statusColorAchieved = '#81D4FA';
   private statusColorSlidingThrough = '#FFF176';
   private statusColorDeterminationList = '#64B5F6';
-
 
 
   pvbs = [
@@ -61,6 +61,7 @@ export class CandidatesComponent implements OnInit {
     { value: '4', viewValue: 'Doorschuiven' }
   ];
 
+
   protected addCandidateDialogComponent = AddCandidateDialogComponent;
 
   protected editCandidateDialogComponent = EditCandidateDialogComponent;
@@ -74,30 +75,46 @@ export class CandidatesComponent implements OnInit {
     private router: Router,
     private http: Http,
     private dialog: MdDialog,
-    private examApplicationService: ExamApplicationService) {
-    // Candidates
-    this.http.get('../../assets/data.json')
-      .map(response => response.json().candidates)
-      .subscribe(res => this.candidates = res);
-
-    // Students
-    // this.http.get('http://127.0.0.1:8000/api/students')
-    //   .map(response => response.json().students)
-    //   .subscribe(res => this.students = res);
+    private examApplicationService: ExamApplicationService,
+    private examApplicationController: ExamApplicationController) {
   }
 
-
+/*
+* @function: public ngOnInit()
+* @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
+* @params: none
+* @returns: none
+* @date: 22-05-2017
+*/
   public ngOnInit() {
     this.selectedPVB = '0';
     this.selectedOG = '0';
-    this.getStudents();
+    this.getCandidates();
+    // this.examApplicationController.getExamLines();
   }
 
-  public getStudents() {
-    this.examApplicationService.getStudents().subscribe(res => this.students = res);
+/*
+* @function: public getExamLines()
+* @description: gets examLines from the ExamApplicationService through subscription.
+* @params: none
+* @returns: none
+* @date: 27-05-2017
+*/
+  public getCandidates() {
+    this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
+    // this.examApplicationController.getExamLines();
+    // const candidates = this.examApplicationController.filterCandidates;
+    //  getExamLines().subscribe(result => this.candidates = result);
   }
 
 
+/*
+* @function: protected openEditCandidateDialog()
+* @description: opens the EditCandidateDialog. After the dialog has been close, the result will be fetched through subscription.
+* @params: none
+* @returns: none
+* @date: 22-05-2017
+*/
   protected openEditCandidateDialog() {
     const dialogRef = this.dialog.open(this.editCandidateDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -105,6 +122,13 @@ export class CandidatesComponent implements OnInit {
     });
   }
 
+/*
+* @function: protected openAddRemarkDialog()
+* @description: opens the AddRemarkDialog. After the dialog has been close, the result will be fetched through subscription.
+* @params: none
+* @returns: none
+* @date: 22-05-2017
+*/
   protected openAddRemarkDialog() {
     const dialogRef = this.dialog.open(this.addRemarksDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -112,6 +136,13 @@ export class CandidatesComponent implements OnInit {
     });
   }
 
+/*
+* @function: protected openRemarksDialog()
+* @description: opens the EditCandidateDialog.
+* @params: none
+* @returns: none
+* @date: 22-05-2017
+*/
   protected openRemarksDialog() {
     const dialogRef = this.dialog.open(this.remarksDialogComponent);
   }

@@ -63,7 +63,8 @@ import { DatepickerModule } from 'angular2-material-datepicker';
     DatepickerModule
   ],
   providers: [
-    ExamApplicationService
+    ExamApplicationService,
+    ExamApplicationController
   ],
   bootstrap: [AppComponent]
 })
