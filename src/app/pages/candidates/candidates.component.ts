@@ -29,6 +29,8 @@ export class CandidatesComponent implements OnInit {
   title = 'Kandidaten';
   candidates: ExamLine[];
 
+  selectedCandidate: ExamLine;
+
   selectedOption: string;
   selectedPVB: string;
   selectedOG: string;
@@ -79,27 +81,26 @@ export class CandidatesComponent implements OnInit {
     private examApplicationController: ExamApplicationController) {
   }
 
-/*
-* @function: public ngOnInit()
-* @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
-* @params: none
-* @returns: none
-* @date: 22-05-2017
-*/
+  /*
+  * @function: public ngOnInit()
+  * @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @params: none
+  * @returns: none
+  * @date: 22-05-2017
+  */
   public ngOnInit() {
     this.selectedPVB = '0';
     this.selectedOG = '0';
     this.getCandidates();
-    // this.examApplicationController.getExamLines();
   }
 
-/*
-* @function: public getExamLines()
-* @description: gets examLines from the ExamApplicationService through subscription.
-* @params: none
-* @returns: none
-* @date: 27-05-2017
-*/
+  /*
+  * @function: public getCandidates()
+  * @description: gets candidates from the ExamApplicationService through subscription.
+  * @params: none
+  * @returns: none
+  * @date: 27-05-2017
+  */
   public getCandidates() {
     this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
     // this.examApplicationController.getExamLines();
@@ -108,27 +109,34 @@ export class CandidatesComponent implements OnInit {
   }
 
 
-/*
-* @function: protected openEditCandidateDialog()
-* @description: opens the EditCandidateDialog. After the dialog has been close, the result will be fetched through subscription.
-* @params: none
-* @returns: none
-* @date: 22-05-2017
-*/
-  protected openEditCandidateDialog() {
-    const dialogRef = this.dialog.open(this.editCandidateDialogComponent);
+  /*
+  * @function: protected openEditCandidateDialog()
+  * @description: opens the EditCandidateDialog. After the dialog has been close, the result will be fetched through subscription.
+  * @params: none
+  * @returns: none
+  * @date: 30-05-2017
+  */
+  protected openEditCandidateDialog(c) {
+    this.candidates.forEach(candidate => {
+      const line = c + 1;
+      if (candidate.id === line) {
+        this.selectedCandidate = candidate;
+      };
+    });
+
+    const dialogRef = this.dialog.open(this.editCandidateDialogComponent, { data: this.selectedCandidate });
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
     });
   }
 
-/*
-* @function: protected openAddRemarkDialog()
-* @description: opens the AddRemarkDialog. After the dialog has been close, the result will be fetched through subscription.
-* @params: none
-* @returns: none
-* @date: 22-05-2017
-*/
+  /*
+  * @function: protected openAddRemarkDialog()
+  * @description: opens the AddRemarkDialog. After the dialog has been close, the result will be fetched through subscription.
+  * @params: none
+  * @returns: none
+  * @date: 22-05-2017
+  */
   protected openAddRemarkDialog() {
     const dialogRef = this.dialog.open(this.addRemarksDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -136,13 +144,13 @@ export class CandidatesComponent implements OnInit {
     });
   }
 
-/*
-* @function: protected openRemarksDialog()
-* @description: opens the EditCandidateDialog.
-* @params: none
-* @returns: none
-* @date: 22-05-2017
-*/
+  /*
+  * @function: protected openRemarksDialog()
+  * @description: opens the EditCandidateDialog.
+  * @params: none
+  * @returns: none
+  * @date: 22-05-2017
+  */
   protected openRemarksDialog() {
     const dialogRef = this.dialog.open(this.remarksDialogComponent);
   }

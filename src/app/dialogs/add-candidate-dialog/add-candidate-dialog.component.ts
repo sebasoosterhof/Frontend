@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MdDialogRef, MdDialog } from '@angular/material';
 
 @Component({
   selector: 'add-candidate-dialog',
@@ -18,6 +18,9 @@ export class AddCandidateDialogComponent {
     { value: '5', viewValue: '2016-2017' },
   ];
 
-  constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>) { }
+  constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>, public dialog: MdDialog) { }
 
+  protected closeDialog() {
+    this.dialog.closeAll();
+  }
 }

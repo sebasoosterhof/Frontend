@@ -15,4 +15,7 @@ export class ConfirmationDialogComponent {
     public dialog: MdDialog,
     public dialogRef: MdDialogRef<ConfirmationDialogComponent>, ) { }
 
+  protected closeDialog() {
+    this.dialog.closeAll();
+  }
 }

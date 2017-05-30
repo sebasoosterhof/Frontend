@@ -22,4 +22,8 @@ export class RemarksDialogComponent {
       this.selectedOption = result;
     });
   }
+
+ protected closeDialog() {
+    this.dialog.closeAll();
+  }
 }

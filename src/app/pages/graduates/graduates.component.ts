@@ -38,7 +38,7 @@ export class GraduatesComponent implements OnInit {
 
   /*
 * @function: public getGraduates()
-* @description: gets examLines from the ExamApplicationService through subscription.
+* @description: gets graduates from the ExamApplicationService through subscription.
 * @params: none
 * @returns: none
 * @date: 30-05-2017
