@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdDialogRef, MdDialog } from '@angular/material';
+import { Component, Inject, Optional } from '@angular/core';
+import { MdDialogRef, MdDialog, MD_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'add-remarks-dialog',
@@ -16,7 +16,9 @@ export class AddRemarksDialogComponent {
         { value: '4', viewValue: 'Overig' }
     ];
 
-  constructor(public dialogRef: MdDialogRef<AddRemarksDialogComponent>, public dialog: MdDialog) { }
+  constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
+    public dialogRef: MdDialogRef<AddRemarksDialogComponent>,
+    public dialog: MdDialog) { }
 
   protected closeDialog() {
     this.dialog.closeAll();

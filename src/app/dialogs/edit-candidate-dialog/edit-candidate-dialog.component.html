@@ -2,56 +2,53 @@
 <div md-dialog-content></div>
 <div md-dialog-actions>
 
-    <div fxLayout="row">
-        <div fxLayout="column">
-            <div class="credential">Naam</div>
-            <div class="credential">Studentnummer</div>
-            <div class="credential">Opleiding</div>
-            <div class="credential">Crebo</div>
-            <div class="credential">Exit</div>
-            <div class="credential">Kandidaat verwijderen</div>
-        </div>
-
-        <div fxLayout="column">
-            <div class="credential">:</div>
-            <div class="credential">:</div>
-            <div class="credential">:</div>
-            <div class="credential">:</div>
-            <div class="credential">:</div>
-            <div class="credential">:</div>
-        </div>
-
-        <div fxLayout="column" fxFlexOffset="10" class="inputs">
-            <div class="credential">
-                Henk van der Wal
-            </div>
-            <div class="credential">
-                213408
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput value="Applicatieontwikkeling">
-                </md-input-container>
-            </div>
-            <div>
-                <md-input-container class="input">
-                    <input mdInput value="95311">
-                </md-input-container>
-            </div>
-            <div class="input">
-                <md-slide-toggle></md-slide-toggle>
-            </div>
-            <div>
-                <div fxLayout="row" fxLayoutAlign="end center" class="credential">
-                    <button md-raised-button color="accent" (click)="openConfirmationDialog()">Kandidaat verwijderen</button>
-                </div>
-            </div>
-        </div>
-
+  <div fxLayout="row">
+    <div fxLayout="column">
+      <div class="credential">Naam</div>
+      <div class="credential">Studentnummer</div>
+      <div class="credential">Opleiding</div>
+      <div class="credential">Crebo</div>
+      <div class="credential">Exit</div>
+      <div class="credential">Kandidaat verwijderen</div>
     </div>
+    <div fxLayout="column">
+      <div class="credential">:</div>
+      <div class="credential">:</div>
+      <div class="credential">:</div>
+      <div class="credential">:</div>
+      <div class="credential">:</div>
+      <div class="credential">:</div>
+    </div>
+    <div fxLayout="column" fxFlexOffset="10" class="inputs">
+      <div class="credential">
+        {{ selectedCandidate.firstname }} {{ selectedCandidate.lastname}}
+      </div>
+      <div class="credential">
+        {{ selectedCandidate.studentnumber }}
+      </div>
+      <div>
+        <md-input-container class="input">
+          <input mdInput value="{{ selectedCandidate.education }}">
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container class="input">
+          <input mdInput value="{{ selectedCandidate.crebo }}">
+        </md-input-container>
+      </div>
+      <div class="input">
+        <md-slide-toggle (change)="onCheckChange($event)" [checked]="checked"></md-slide-toggle>
+      </div>
+      <div>
+        <div fxLayout="row" fxLayoutAlign="end center" class="credential">
+          <button md-raised-button color="accent" (click)="openConfirmationDialog()">Kandidaat verwijderen</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div fxLayout="row" fxLayoutAlign="end center">
-    <button md-button>Annuleren</button>
-    <button md-raised-button color="primary">Opslaan</button>
+  <button md-button (click)="closeDialog()">Annuleren</button>
+  <button md-raised-button color="primary">Opslaan</button>
 </div>

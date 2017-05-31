@@ -18,6 +18,7 @@ import { EditCandidateDialogComponent } from '../../dialogs/edit-candidate-dialo
 
 // Interfaces
 import { ExamLine } from '../../interfaces/exam-line';
+import { Remark } from '../../interfaces/remark';
 
 
 @Component({
@@ -28,6 +29,7 @@ import { ExamLine } from '../../interfaces/exam-line';
 export class CandidatesComponent implements OnInit {
   title = 'Kandidaten';
   candidates: ExamLine[];
+  remarks: Remark[];
 
   selectedCandidate: ExamLine;
 
@@ -83,7 +85,7 @@ export class CandidatesComponent implements OnInit {
 
   /*
   * @function: public ngOnInit()
-  * @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
   * @params: none
   * @returns: none
   * @date: 22-05-2017
@@ -103,11 +105,19 @@ export class CandidatesComponent implements OnInit {
   */
   public getCandidates() {
     this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
-    // this.examApplicationController.getExamLines();
-    // const candidates = this.examApplicationController.filterCandidates;
-    //  getExamLines().subscribe(result => this.candidates = result);
   }
 
+
+  /*
+  * @function: public getRemarks()
+  * @description: Gets candidates from the ExamApplicationService through subscription.
+  * @params: none
+  * @returns: none
+  * @date: 31-05-2017
+  */
+  protected getRemarks() {
+    this.examApplicationService.getRemarks().subscribe(result => this.remarks = result);
+  }
 
   /*
   * @function: protected openEditCandidateDialog()
@@ -137,8 +147,15 @@ export class CandidatesComponent implements OnInit {
   * @returns: none
   * @date: 22-05-2017
   */
-  protected openAddRemarkDialog() {
-    const dialogRef = this.dialog.open(this.addRemarksDialogComponent);
+  protected openAddRemarkDialog(c) {
+    this.candidates.forEach(candidate => {
+      const line = c + 1;
+      if (candidate.id === line) {
+        this.selectedCandidate = candidate;
+      };
+    });
+
+    const dialogRef = this.dialog.open(this.addRemarksDialogComponent, { data: this.selectedCandidate });
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
     });
@@ -151,8 +168,18 @@ export class CandidatesComponent implements OnInit {
   * @returns: none
   * @date: 22-05-2017
   */
-  protected openRemarksDialog() {
-    const dialogRef = this.dialog.open(this.remarksDialogComponent);
+  protected openRemarksDialog(c) {
+    this.candidates.forEach(candidate => {
+      const line = c + 1;
+      if (candidate.id === line) {
+        this.selectedCandidate = candidate;
+      };
+    });
+
+    const dialogRef = this.dialog.open(this.remarksDialogComponent, { data: this.selectedCandidate });
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    });
   }
 
   protected onPVBChanged(value: string) {
