@@ -18,7 +18,6 @@ import { EditCandidateDialogComponent } from '../../dialogs/edit-candidate-dialo
 
 // Interfaces
 import { ExamLine } from '../../interfaces/exam-line';
-import { Remark } from '../../interfaces/remark';
 
 
 @Component({
@@ -29,7 +28,6 @@ import { Remark } from '../../interfaces/remark';
 export class CandidatesComponent implements OnInit {
   title = 'Kandidaten';
   candidates: ExamLine[];
-  remarks: Remark[];
 
   selectedCandidate: ExamLine;
 
@@ -107,17 +105,6 @@ export class CandidatesComponent implements OnInit {
     this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
   }
 
-
-  /*
-  * @function: public getRemarks()
-  * @description: Gets candidates from the ExamApplicationService through subscription.
-  * @params: none
-  * @returns: none
-  * @date: 31-05-2017
-  */
-  protected getRemarks() {
-    this.examApplicationService.getRemarks().subscribe(result => this.remarks = result);
-  }
 
   /*
   * @function: protected openEditCandidateDialog()

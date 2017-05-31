@@ -20,7 +20,7 @@
     <ng-container *ngFor="let line of candidates; let i = index">
 
       <!-- candidate_status is exit -->
-      <ng-container *ngIf="line.candidate_status === 'exit'">
+      <ng-container *ngIf="line.status === 'exit'">
         <tr class="padding-top exit-student">
           <td data-title="Wijzig" class="padding-top">
             <span mdTooltip="Wijzig kandidaat eigenschappen" mdTooltipPosition="right">
@@ -38,7 +38,7 @@
 
       <!-- candidate_status is candidate -->
       <tr class="padding-top">
-        <ng-container *ngIf="line.candidate_status === 'candidate'">
+        <ng-container *ngIf="line.status === 'candidate'">
           <td data-title="Wijzig" class="padding-top">
             <span mdTooltip="Wijzig de kandidaat" mdTooltipPosition="right">
             <md-icon (click)="openEditCandidateDialog(i)" class="clickable">edit</md-icon>

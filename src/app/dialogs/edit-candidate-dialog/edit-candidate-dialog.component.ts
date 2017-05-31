@@ -1,6 +1,11 @@
 import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { MdDialogRef, MdDialog, MD_DIALOG_DATA } from '@angular/material';
+
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+
+import { ExamLine } from '../../interfaces/exam-line';
+import { CandidateStatus } from '../../infrastructure/enums/candidate-status';
+
 
 @Component({
   selector: 'edit-candidate-dialog',
@@ -9,14 +14,15 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class EditCandidateDialogComponent implements OnInit {
   selectedOption: string;
-  selectedCandidate = Array;
+  selectedCandidate: ExamLine[];
+
 
   protected confirmationDialogComponent = ConfirmationDialogComponent;
 
   @Input()
   checked;
 
-  constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
+  constructor( @Optional() @Inject(MD_DIALOG_DATA) public data: any,
     public dialogRef: MdDialogRef<EditCandidateDialogComponent>,
     public dialog: MdDialog) { }
 
@@ -29,6 +35,14 @@ export class EditCandidateDialogComponent implements OnInit {
   */
   public ngOnInit() {
     this.selectedCandidate = this.data;
+    console.log(this.selectedCandidate['status']);
+
+    if (this.selectedCandidate['status'] === 'exit') {
+      this.checked = true;
+    }
+    else {
+      this.checked = false;
+    }
   }
 
 
@@ -64,6 +78,7 @@ export class EditCandidateDialogComponent implements OnInit {
   * @returns: none
   * @date: 30-05-2017
   */
-  protected onCheckChange() {
+  protected onCheckChange(event: Event) {
+    console.log(event);
   }
 }

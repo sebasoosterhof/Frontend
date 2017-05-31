@@ -40,7 +40,7 @@ export class RemarksDialogComponent implements OnInit {
   */
   public ngOnInit() {
     this.selectedCandidate = this.data;
-    console.log(this.selectedCandidate);
+    // console.log(this.selectedCandidate);
     this.getRemarks();
   }
 
@@ -53,7 +53,6 @@ export class RemarksDialogComponent implements OnInit {
   */
   protected getRemarks() {
     this.examApplicationService.getRemarks().subscribe(result => this.remarks = result);
-    console.log(this.remarks);
   }
 
   /*

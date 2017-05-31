@@ -1,6 +1,6 @@
 import { CandidateStatus } from '../infrastructure/enums/candidate-status';
 
-export class ExamLine {
+export interface ExamLine {
   id: number;
   examcandidate_id: number;
   exam_id: number;

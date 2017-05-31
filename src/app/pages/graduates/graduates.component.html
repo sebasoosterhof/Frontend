@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let line of graduates" class="graduate">
-      <ng-container *ngIf="line.candidate_status === 'graduated'">
+      <ng-container *ngIf="line.status === 'graduated'">
         <td data-title="Naam" class="padding-left">{{ line.firstname }} {{ line.lastname }}</td>
         <td data-title="Studentnummer" class="padding-left">{{ line.studentnumber }}</td>
         <td data-title="Opleiding" class="padding-left">{{ line.education }}</td>
