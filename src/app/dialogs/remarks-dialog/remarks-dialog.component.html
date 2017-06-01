@@ -19,7 +19,7 @@
           </div>
           <div class="standard-padding">
             <ng-container *ngIf="remarks">
-              <b>Opmerkinggever:</b> {{ selectedCandidate.user_firstname }} {{ selectedCandidate.user_lastname }}
+              <b>Opmerkinggever:</b> {{ selectedCandidate.remark_user_firstname }} {{ selectedCandidate.remark_user_lastname }}
             </ng-container>
           </div>
           <div class="standard-padding">
@@ -33,6 +33,6 @@
   <div md-dialog-actions>
   </div>
   <div fxLayout="row" fxLayoutAlign="end center">
-    <button md-button (click)="closeDialog()">Annuleren</button>
-    <button md-raised-button color="primary">Opslaan</button>
+    <button md-button (click)="closeDialog()">Sluiten</button>
+    <!--<button md-raised-button color="primary">Opslaan</button>-->
   </div>

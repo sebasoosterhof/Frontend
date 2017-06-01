@@ -28,16 +28,16 @@
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput value="{{ selectedCandidate.education }}">
+          <input #education mdInput value="{{ selectedCandidate.education }}" (blur)="onEducationChanged(education.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput value="{{ selectedCandidate.crebo }}">
+          <input #crebo mdInput value="{{ selectedCandidate.crebo }}" (blur)="onCreboChanged(crebo.value)">
         </md-input-container>
       </div>
       <div class="input">
-        <md-slide-toggle (change)="onCheckChange($event)" [checked]="checked"></md-slide-toggle>
+        <md-slide-toggle #exitToggle (change)="onExitChanged(exitToggle.checked)" [checked]="checked"></md-slide-toggle>
       </div>
       <div>
         <div fxLayout="row" fxLayoutAlign="end center" class="credential">

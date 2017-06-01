@@ -28,14 +28,13 @@ export class EditCandidateDialogComponent implements OnInit {
 
   /*
   * @function: public ngOnInit()
-  * @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
   * @params: none
   * @returns: none
   * @date: 31-05-2017
   */
   public ngOnInit() {
     this.selectedCandidate = this.data;
-    console.log(this.selectedCandidate['status']);
 
     if (this.selectedCandidate['status'] === 'exit') {
       this.checked = true;
@@ -48,7 +47,7 @@ export class EditCandidateDialogComponent implements OnInit {
 
   /*
   * @function: public openConfirmationDialog()
-  * @description: This is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
   * @params: none
   * @returns: none
   * @date: 30-05-2017
@@ -62,7 +61,7 @@ export class EditCandidateDialogComponent implements OnInit {
 
   /*
   * @function: public closeDialog()
-  * @description: Closes the dialog.
+  * @description: closes the dialog.
   * @params: none
   * @returns: none
   * @date: 30-05-2017
@@ -73,12 +72,43 @@ export class EditCandidateDialogComponent implements OnInit {
 
   /*
   * @function: public onCheckChange()
-  * @description: Checks for changes on the toggle slider.
+  * @description: checks for changes on the toggle slider.
   * @params: none
   * @returns: none
   * @date: 30-05-2017
   */
-  protected onCheckChange(event: Event) {
-    console.log(event);
+  protected onExitChanged(value: string) {
+    // console.log(value);
+    if (value) {
+      this.selectedCandidate['status'] = 'exit';
+      console.log(this.selectedCandidate['status']);
+    }
+    if (!value) {
+      this.selectedCandidate['status'] = 'candidate';
+      console.log(this.selectedCandidate['status']);
+    }
   }
+
+  /*
+  * @function: public onEducationChanged()
+  * @description: changes education to corresponding change in the education input.
+  * @params: value
+  * @returns: none
+  * @date: 01-06-2017
+  */
+  protected onEducationChanged(value: string) {
+    this.selectedCandidate['education'] = value;
+  }
+
+  /*
+  * @function: public onCreboChanged()
+  * @description: changes crebo to corresponding change in the crebo input.
+  * @params: value
+  * @returns: none
+  * @date: 01-06-2017
+  */
+  protected onCreboChanged(value: string) {
+    this.selectedCandidate['crebo'] = value;
+  }
+
 }

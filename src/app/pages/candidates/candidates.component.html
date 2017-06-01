@@ -64,7 +64,7 @@
             <md-checkbox color="primary" class="clickable"></md-checkbox>
             7
             <md-checkbox color="primary" class="clickable"></md-checkbox>
-            <span mdTooltip="{{ line.remark }}" class="tooltip">
+            <span *ngIf="line.remark_id != 1 && line.remark_component === 'WPT/HBE'" mdTooltip="{{ line.remark }}" class="tooltip">
               <md-icon (click)="openRemarksDialog(i)" class="clickable" style="right:54.5rem;">feedback</md-icon>
             </span>
           </td>
@@ -88,7 +88,7 @@
             <md-checkbox color="primary" class="clickable"></md-checkbox>
             4
             <md-checkbox color="primary" class="clickable"></md-checkbox>
-            <span mdTooltip="{{ line.remark }}">
+            <span *ngIf="line.remark_id != 1 && line.remark_component === 'PVB'" mdTooltip="{{ line.remark }}">
               <md-icon (click)="openRemarksDialog(i)" class="clickable" style="right:24.2rem;">feedback</md-icon>
             </span>
           </td>
@@ -112,7 +112,7 @@
 
               </div>
               <div fxFlex fxFlexAlign="center center">
-                <span mdTooltip="Bekijk alle opmerkingen" class="tooltip">
+                <span *ngIf="line.remark_id != 1 " mdTooltip="Bekijk alle opmerkingen" class="tooltip">
                   <md-icon (click)="openRemarksDialog(i)" class="clickable">feedback</md-icon>
                 </span>
               </div>
