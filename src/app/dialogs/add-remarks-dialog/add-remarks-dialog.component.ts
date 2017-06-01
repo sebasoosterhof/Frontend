@@ -20,7 +20,4 @@ export class AddRemarksDialogComponent {
     public dialogRef: MdDialogRef<AddRemarksDialogComponent>,
     public dialog: MdDialog) { }
 
-  protected closeDialog() {
-    this.dialog.closeAll();
-  }
 }

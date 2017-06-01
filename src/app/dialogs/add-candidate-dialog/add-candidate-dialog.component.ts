@@ -20,7 +20,4 @@ export class AddCandidateDialogComponent {
 
   constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>, public dialog: MdDialog) { }
 
-  protected closeDialog() {
-    this.dialog.closeAll();
-  }
 }

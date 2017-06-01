@@ -16,6 +16,10 @@ export class EditCandidateDialogComponent implements OnInit {
   selectedOption: string;
   selectedCandidate: ExamLine[];
 
+  creboValue: string;
+  educationValue: string;
+  statusValue: string;
+
 
   protected confirmationDialogComponent = ConfirmationDialogComponent;
 
@@ -35,6 +39,12 @@ export class EditCandidateDialogComponent implements OnInit {
   */
   public ngOnInit() {
     this.selectedCandidate = this.data;
+    this.initializeData();
+
+    // this.selectedCandidate['education'] = this.educationValue;
+    // this.selectedCandidate['crebo'] = this.creboValue;
+    // this.selectedCandidate['status'] = this.statusValue;
+
 
     if (this.selectedCandidate['status'] === 'exit') {
       this.checked = true;
@@ -60,33 +70,14 @@ export class EditCandidateDialogComponent implements OnInit {
   }
 
   /*
-  * @function: public closeDialog()
-  * @description: closes the dialog.
-  * @params: none
-  * @returns: none
-  * @date: 30-05-2017
-  */
-  protected closeDialog() {
-    this.dialog.closeAll();
-  }
-
-  /*
-  * @function: public onCheckChange()
+  * @function: public onExitChange()
   * @description: checks for changes on the toggle slider.
   * @params: none
   * @returns: none
   * @date: 30-05-2017
   */
   protected onExitChanged(value: string) {
-    // console.log(value);
-    if (value) {
-      this.selectedCandidate['status'] = 'exit';
-      console.log(this.selectedCandidate['status']);
-    }
-    if (!value) {
-      this.selectedCandidate['status'] = 'candidate';
-      console.log(this.selectedCandidate['status']);
-    }
+    this.statusValue = value;
   }
 
   /*
@@ -96,8 +87,19 @@ export class EditCandidateDialogComponent implements OnInit {
   * @returns: none
   * @date: 01-06-2017
   */
-  protected onEducationChanged(value: string) {
-    this.selectedCandidate['education'] = value;
+  protected onEducationChanged(educationValue: string) {
+    this.educationValue = educationValue;
+
+    // Applicationdeveloper
+    if (this.educationValue === 'Applicatieontwikkelaar') {
+      this.creboValue = '95311';
+    }
+
+    // Mediadeveloper
+    if (this.educationValue === 'Mediadeveloper') {
+      this.creboValue = '95213';
+    }
+
   }
 
   /*
@@ -107,8 +109,50 @@ export class EditCandidateDialogComponent implements OnInit {
   * @returns: none
   * @date: 01-06-2017
   */
-  protected onCreboChanged(value: string) {
-    this.selectedCandidate['crebo'] = value;
+  protected onCreboChanged(creboValue: string) {
+    this.creboValue = creboValue;
+
+    // Applicationdeveloper
+    if (this.creboValue === '95311') {
+      this.educationValue = 'Applicatieontwikkelaar';
+    }
+
+    // Mediadeveloper
+    if (this.creboValue === '95213') {
+      this.educationValue = 'Mediadeveloper';
+    }
+  }
+
+  protected setChanges() {
+    if (this.statusValue) {
+      this.selectedCandidate['status'] = 'exit';
+    }
+    if (!this.statusValue) {
+      this.selectedCandidate['status'] = 'candidate';
+    }
+
+    this.selectedCandidate['crebo'] = this.creboValue;
+    this.selectedCandidate['education'] = this.educationValue;
+  }
+
+
+  private initializeData() {
+    // Applicationdeveloper
+    if (this.selectedCandidate['education'] === 'Applicatieontwikkelaar') {
+      this.creboValue = '95311';
+    }
+    if (this.selectedCandidate['crebo'] === '95311') {
+      this.educationValue = 'Applicatieontwikkelaar';
+    }
+
+    // Mediadeveloper
+    if (this.selectedCandidate['education'] === 'Mediadeveloper') {
+      this.creboValue = '95213';
+    }
+    if (this.selectedCandidate['crebo'] === '95213') {
+      this.educationValue = 'Mediadeveloper';
+    }
+
   }
 
 }

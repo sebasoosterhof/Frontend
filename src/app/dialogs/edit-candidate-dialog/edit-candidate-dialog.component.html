@@ -28,12 +28,12 @@
       </div>
       <div>
         <md-input-container class="input">
-          <input #education mdInput value="{{ selectedCandidate.education }}" (blur)="onEducationChanged(education.value)">
+          <input #education mdInput value="{{ educationValue }}" (blur)="onEducationChanged(education.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input #crebo mdInput value="{{ selectedCandidate.crebo }}" (blur)="onCreboChanged(crebo.value)">
+          <input #crebo mdInput value="{{ creboValue }}" (blur)="onCreboChanged(crebo.value)">
         </md-input-container>
       </div>
       <div class="input">
@@ -49,6 +49,6 @@
 </div>
 
 <div fxLayout="row" fxLayoutAlign="end center">
-  <button md-button (click)="closeDialog()">Annuleren</button>
-  <button md-raised-button color="primary">Opslaan</button>
+  <button md-button (click)="dialogRef.close()">Annuleren</button>
+  <button md-raised-button color="primary" (click)="setChanges(); dialogRef.close(true)">Opslaan</button>
 </div>

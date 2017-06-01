@@ -68,15 +68,4 @@ export class RemarksDialogComponent implements OnInit {
       this.selectedOption = result;
     });
   }
-
-  /*
-  * @function: public closeDialog()
-  * @description: Closes the dialog.
-  * @params: none
-  * @returns: none
-  * @date: 30-05-2017
-  */
-  protected closeDialog() {
-    this.dialog.closeAll();
-  }
 }
