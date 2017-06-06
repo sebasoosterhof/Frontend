@@ -45,8 +45,6 @@ export class EditCandidateDialogComponent implements OnInit {
     this.selectedCandidate = this.data;
     this.initializeData();
     console.log(this.selectedCandidate);
-
-
   }
 
 
@@ -157,8 +155,6 @@ export class EditCandidateDialogComponent implements OnInit {
         return true;
       },
       error => {
-        console.error('Error saving candidate!' + error);
-        console.log(this.selectedCandidate);
         return Observable.throw(error);
       }
     );

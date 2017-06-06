@@ -54,18 +54,6 @@ export class ExamApplicationService {
   * @date: 31-05-2017
   */
   public setExamLines(candidate): Observable<ExamLine[]> {
-    const url = 'http://127.0.0.1:8000/api/examlines/update/candidate?id=' + candidate.id +
-      // '&crebo_id=' + candidate.crebo_id +
-      // '&crebo=' + candidate.crebo +
-      // '&education=' + candidate.education +
-      '&status=' + candidate.status;
-      // '&remark_id=' + candidate.remark_id;
-
-    console.log(url);
-
-    // console.log(id);
-    console.log(candidate);
-    console.log(candidate.status);
     const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.setExamLinesURL, candidate, headers)
@@ -87,7 +75,6 @@ export class ExamApplicationService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    console.error(errMsg);
     return Observable.throw(errMsg);
   }
 }
