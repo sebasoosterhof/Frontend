@@ -1,10 +1,12 @@
 import { Component, Inject, Input, OnInit, Optional } from '@angular/core';
 import { MdDialogRef, MdDialog, MD_DIALOG_DATA } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 import { ExamLine } from '../../interfaces/exam-line';
 import { CandidateStatus } from '../../infrastructure/enums/candidate-status';
+import { ExamApplicationService } from 'app/services/exam-application.service';
 
 
 @Component({
@@ -29,7 +31,8 @@ export class EditCandidateDialogComponent implements OnInit {
 
   constructor( @Optional() @Inject(MD_DIALOG_DATA) public data: any,
     public dialogRef: MdDialogRef<EditCandidateDialogComponent>,
-    public dialog: MdDialog) { }
+    public dialog: MdDialog,
+    private examApplicationService: ExamApplicationService) { }
 
   /*
   * @function: public ngOnInit()
@@ -75,7 +78,7 @@ export class EditCandidateDialogComponent implements OnInit {
   /*
   * @function: public onEducationChanged()
   * @description: changes education to corresponding change in the education input.
-  * @params: value
+  * @params: educationValue
   * @returns: none
   * @date: 01-06-2017
   */
@@ -99,7 +102,7 @@ export class EditCandidateDialogComponent implements OnInit {
   /*
   * @function: public onCreboChanged()
   * @description: changes crebo to corresponding change in the crebo input.
-  * @params: value
+  * @params: creboValue
   * @returns: none
   * @date: 01-06-2017
   */
@@ -120,9 +123,9 @@ export class EditCandidateDialogComponent implements OnInit {
   }
 
   /*
-  * @function: public onCreboChanged()
-  * @description: changes crebo to corresponding change in the crebo input.
-  * @params: value
+  * @function: public setChanges()
+  * @description: sets changes to the examApplicationService.
+  * @params: none
   * @returns: none
   * @date: 01-06-2017
   */
@@ -139,12 +142,32 @@ export class EditCandidateDialogComponent implements OnInit {
     this.selectedCandidate['crebo_id'] = this.crebo_id;
     this.selectedCandidate['education'] = this.educationValue;
     this.selectedCandidate['crebo'] = this.creboValue;
+
+    this.examApplicationService.setExamLines(
+      this.selectedCandidate
+      // this.selectedCandidate['id'],
+      // this.selectedCandidate['status'],
+    );
+
+
+    this.examApplicationService.setExamLines(this.selectedCandidate).subscribe(
+      data => {
+        // refresh the list
+        this.examApplicationService.getExamLines();
+        return true;
+      },
+      error => {
+        console.error('Error saving candidate!' + error);
+        console.log(this.selectedCandidate);
+        return Observable.throw(error);
+      }
+    );
   }
 
 
   /*
   * @function: private initializeData()
-  * @description: initializes the data from this.data, sets exit toggle based on selectedCandidate status, sets education/crebo.
+  * @description: initializes the data from this.data, sets exit toggle based on selectedCandidate , sets education/crebo.
   * @params: none
   * @returns: none
   * @date: 01-06-2017

@@ -1,9 +1,9 @@
 // Angular
+import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr  } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Material
@@ -11,6 +11,7 @@ import { MaterialModule } from '@angular/material';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
+
 
 // Controllers
 import { ExamApplicationController } from './controllers/exam-application.controller';
