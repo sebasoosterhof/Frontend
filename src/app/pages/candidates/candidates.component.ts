@@ -1,5 +1,5 @@
 // Angular
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
 import { MdDialog } from '@angular/material';
@@ -37,6 +37,8 @@ export class CandidatesComponent implements OnInit {
   pvbBGColor: string;
   ogBGColor: string;
 
+  @Input()
+  checked;
 
   private statusColorUndefined = '#fff';
   private statusColorYes = '#81C784';
@@ -92,6 +94,7 @@ export class CandidatesComponent implements OnInit {
     this.selectedPVB = '0';
     this.selectedOG = '0';
     this.getCandidates();
+    // this.checked = true;
   }
 
   /*
@@ -103,6 +106,19 @@ export class CandidatesComponent implements OnInit {
   */
   public getCandidates() {
     this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
+  }
+
+  /*
+  * @function: public getCandidates()
+  * @description: gets candidates from the ExamApplicationService through subscription.
+  * @params: none
+  * @returns: none
+  * @date: 27-05-2017
+  */
+  public filterExams() {
+    // for (let i = 0, len = str.length; i < len; i++) {
+    //   alert(str[i]);
+    // }
   }
 
 

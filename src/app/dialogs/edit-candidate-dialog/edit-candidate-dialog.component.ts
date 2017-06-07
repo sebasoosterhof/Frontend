@@ -44,7 +44,6 @@ export class EditCandidateDialogComponent implements OnInit {
   public ngOnInit() {
     this.selectedCandidate = this.data;
     this.initializeData();
-    console.log(this.selectedCandidate);
   }
 
 
@@ -82,16 +81,20 @@ export class EditCandidateDialogComponent implements OnInit {
   */
   protected onEducationChanged(educationValue: string) {
     this.educationValue = educationValue;
+    const applicationdeveloper = 'Applicatieontwikkelaar';
+    const mediadeveloper = 'Mediadeveloper';
+    const adCrebo = '95311';
+    const mdCrebo = '95213';
 
     // Applicationdeveloper
-    if (this.educationValue === 'Applicatieontwikkelaar') {
-      this.creboValue = '95311';
+    if (this.educationValue === applicationdeveloper) {
+      this.creboValue = adCrebo;
       this.crebo_id = 1;
     }
 
     // Mediadeveloper
-    if (this.educationValue === 'Mediadeveloper') {
-      this.creboValue = '95213';
+    if (this.educationValue === mediadeveloper) {
+      this.creboValue = mdCrebo;
       this.crebo_id = 2;
     }
 
@@ -106,17 +109,21 @@ export class EditCandidateDialogComponent implements OnInit {
   */
   protected onCreboChanged(creboValue: string) {
     this.creboValue = creboValue;
+    const applicationdeveloper = 'Applicatieontwikkelaar';
+    const mediadeveloper = 'Mediadeveloper';
+    const adCrebo = '95311';
+    const mdCrebo = '95213';
 
     // Applicationdeveloper
-    if (this.creboValue === '95311') {
+    if (this.creboValue === adCrebo) {
       this.crebo_id = 1;
-      this.educationValue = 'Applicatieontwikkelaar';
+      this.educationValue = applicationdeveloper;
     }
 
     // Mediadeveloper
-    if (this.creboValue === '95213') {
+    if (this.creboValue === mdCrebo) {
       this.crebo_id = 2;
-      this.educationValue = 'Mediadeveloper';
+      this.educationValue = mediadeveloper;
     }
   }
 
@@ -125,7 +132,7 @@ export class EditCandidateDialogComponent implements OnInit {
   * @description: sets changes to the examApplicationService.
   * @params: none
   * @returns: none
-  * @date: 01-06-2017
+  * @date: 06-06-2017
   */
   protected setChanges() {
     // Exit
@@ -140,13 +147,6 @@ export class EditCandidateDialogComponent implements OnInit {
     this.selectedCandidate['crebo_id'] = this.crebo_id;
     this.selectedCandidate['education'] = this.educationValue;
     this.selectedCandidate['crebo'] = this.creboValue;
-
-    this.examApplicationService.setExamLines(
-      this.selectedCandidate
-      // this.selectedCandidate['id'],
-      // this.selectedCandidate['status'],
-    );
-
 
     this.examApplicationService.setExamLines(this.selectedCandidate).subscribe(
       data => {

@@ -21,35 +21,35 @@
       <div class="credential">:</div>
     </div>
 
-    <div fxLayout="column" fxFlexOffset="10" class="inputs">
+    <div fxLayout="column" fxFlexOffset="5" class="inputs">
       <div>
         <md-input-container class="input">
-          <input mdInput placeholder="Voornaam" value="">
+          <input #firstname mdInput placeholder="Voornaam" value="" (blur)="onFirstnameChanged(firstname.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput placeholder="Achternaam" value="">
+          <input #lastname mdInput placeholder="Achternaam" value="" (blur)="onLastnameChanged(lastname.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput placeholder="Studentnummer" value="">
+          <input #studentnumber mdInput placeholder="Studentnummer" value="" (blur)="onStudentnumberChanged(studentnumber.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput placeholder="Opleiding" value="">
+          <input #education mdInput placeholder="Opleiding" value="{{ educationValue }}" (blur)="onEducationChanged(education.value)">
         </md-input-container>
       </div>
       <div>
         <md-input-container class="input">
-          <input mdInput placeholder="Crebo" value="">
+          <input #crebo mdInput placeholder="Crebo" value="{{ creboValue }}" (blur)="onCreboChanged(crebo.value)">
         </md-input-container>
       </div>
       <div>
-        <md-select [(ngModel)]="selectedCohort">
-          <md-option *ngFor="let cohort of cohorts" [value]="cohorts.value">
+        <md-select [(ngModel)]="selectedCohort" (change)="onCohortChanged(selectedCohort)" name="cohort">
+          <md-option *ngFor="let cohort of cohorts" [value]="cohort.value">
             {{ cohort.viewValue }}
           </md-option>
         </md-select>
@@ -63,5 +63,5 @@
 </div>
 <div fxLayout="row" fxLayoutAlign="end center">
   <button md-button (click)="dialogRef.close()">Annuleren</button>
-  <button md-raised-button color="primary">Opslaan</button>
+  <button md-raised-button color="primary" (click)="addExamCandidate(); dialogRef.close(true)">Opslaan</button>
 </div>

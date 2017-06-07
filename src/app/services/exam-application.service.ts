@@ -11,7 +11,8 @@ import { Remark } from '../interfaces/remark';
 @Injectable()
 export class ExamApplicationService {
   private getExamLinesURL = 'http://127.0.0.1:8000/api/examlines/';
-  private setExamLinesURL = 'http://127.0.0.1:8000/api/examlines/update/candidate';
+  private setExamLinesURL = 'http://127.0.0.1:8000/api/examlines/update/examline';
+  private addCandidateURL = 'http://127.0.0.1:8000/api/examcandidates/store/candidate';
   private getRemarksURL = 'http://127.0.0.1:8000/api/remarks/';
 
 
@@ -49,17 +50,34 @@ export class ExamApplicationService {
   /*
   * @function: public setExamLines()
   * @description: gets updated examLines from edit-candidate-dialog and sets them to the API.
-  * @params: none
+  * @params: examLine
   * @returns: http post to API.
-  * @date: 31-05-2017
+  * @date: 06-06-2017
   */
-  public setExamLines(candidate): Observable<ExamLine[]> {
+  public setExamLines(examLine): Observable<ExamLine[]> {
     const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(this.setExamLinesURL, candidate, headers)
+    return this.http.post(this.setExamLinesURL, examLine, headers)
       .map(this.extractData)
       .catch(this.handleError);
   }
+
+  /*
+  * @function: public addExamCandidate()
+  * @description: gets updated examLines from edit-candidate-dialog and sets them to the API.
+  * @params: examCandidate
+  * @returns: http put to API.
+  * @date: 07-06-2017
+  */
+  public addExamCandidate(examCandidate): Observable<ExamLine[]> {
+    const candidate = Object.assign({}, examCandidate);
+    const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put(this.addCandidateURL, candidate, headers)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
 
   private extractData(res: Response) {
     const body = res.json();
