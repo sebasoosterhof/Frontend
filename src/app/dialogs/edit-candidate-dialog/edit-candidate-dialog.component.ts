@@ -6,7 +6,10 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 
 import { ExamLine } from '../../interfaces/exam-line';
 import { CandidateStatus } from '../../infrastructure/enums/candidate-status';
-import { ExamApplicationService } from 'app/services/exam-application.service';
+
+import { ExamApplicationService } from '../../services/exam-application.service';
+
+import { CandidatesComponent } from '../../pages/candidates/candidates.component';
 
 
 @Component({
@@ -25,6 +28,8 @@ export class EditCandidateDialogComponent implements OnInit {
 
 
   protected confirmationDialogComponent = ConfirmationDialogComponent;
+
+  protected candidatesComponent: CandidatesComponent;
 
   @Input()
   checked;
@@ -151,7 +156,8 @@ export class EditCandidateDialogComponent implements OnInit {
     this.examApplicationService.setExamLines(this.selectedCandidate).subscribe(
       data => {
         // refresh the list
-        this.examApplicationService.getExamLines();
+        // this.examApplicationService.getExamLines();
+        this.candidatesComponent.getCandidates();
         return true;
       },
       error => {

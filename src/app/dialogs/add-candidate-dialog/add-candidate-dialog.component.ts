@@ -3,7 +3,10 @@ import { MdDialogRef, MdDialog } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 
 import { ExamCandidate } from '../../interfaces/exam-candidate';
+
 import { ExamApplicationService } from '../../services/exam-application.service';
+
+import { CandidatesComponent } from '../../pages/candidates/candidates.component';
 
 @Component({
   selector: 'add-candidate-dialog',
@@ -32,6 +35,8 @@ export class AddCandidateDialogComponent {
   ];
 
 
+  private candidatesComponent: CandidatesComponent;
+
   constructor(public dialogRef: MdDialogRef<AddCandidateDialogComponent>,
     public dialog: MdDialog,
     private examApplicationService: ExamApplicationService) { }
@@ -56,7 +61,8 @@ export class AddCandidateDialogComponent {
     this.examApplicationService.addExamCandidate(this.examCandidate).subscribe(
       data => {
         // refresh the list
-        this.examApplicationService.getExamLines();
+        // this.examApplicationService.getExamLines();
+        this.candidatesComponent.getCandidates();
         return true;
       },
       error => {
