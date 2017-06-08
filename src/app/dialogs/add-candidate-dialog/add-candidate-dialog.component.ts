@@ -80,7 +80,6 @@ export class AddCandidateDialogComponent {
   */
   protected onFirstnameChanged(firstname: string) {
     this.firstname = firstname;
-    console.log(firstname);
   }
 
   /*
@@ -92,7 +91,6 @@ export class AddCandidateDialogComponent {
     */
   protected onLastnameChanged(lastname: string) {
     this.lastname = lastname;
-    console.log(lastname);
   }
 
   /*
@@ -104,7 +102,6 @@ export class AddCandidateDialogComponent {
   */
   protected onStudentnumberChanged(studentnumber: number) {
     this.studentnumber = studentnumber;
-    console.log(studentnumber);
   }
 
   /*
@@ -132,7 +129,6 @@ export class AddCandidateDialogComponent {
       this.creboValue = mdCrebo;
       this.crebo_id = 2;
     }
-    console.log(education);
   }
 
   /*
@@ -160,7 +156,6 @@ export class AddCandidateDialogComponent {
       this.crebo_id = 2;
       this.educationValue = mediadeveloper;
     }
-    console.log(crebo);
   }
 
   /*
@@ -172,7 +167,5 @@ export class AddCandidateDialogComponent {
   */
   protected onCohortChanged(cohort: string) {
     this.cohort = cohort;
-
-    console.log(cohort);
   }
 }

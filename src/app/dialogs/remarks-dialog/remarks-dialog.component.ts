@@ -40,7 +40,6 @@ export class RemarksDialogComponent implements OnInit {
   */
   public ngOnInit() {
     this.selectedCandidate = this.data;
-    // console.log(this.selectedCandidate);
     this.getRemarks();
   }
 

@@ -83,6 +83,7 @@ export class CandidatesComponent implements OnInit {
     private examApplicationController: ExamApplicationController) {
   }
 
+
   /*
   * @function: public ngOnInit()
   * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
@@ -129,14 +130,14 @@ export class CandidatesComponent implements OnInit {
   * @returns: none
   * @date: 30-05-2017
   */
-  protected openEditCandidateDialog(c) {
+  protected openEditCandidateDialog(id) {
+    console.log(id);
     this.candidates.forEach(candidate => {
-      const line = c + 1;
-      if (candidate.id === line) {
+      // const line = id + 1;
+      if (candidate.id === id) {
         this.selectedCandidate = candidate;
       };
     });
-
     const dialogRef = this.dialog.open(this.editCandidateDialogComponent, { data: this.selectedCandidate });
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;

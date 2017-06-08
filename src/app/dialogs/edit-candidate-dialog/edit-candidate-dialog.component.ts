@@ -18,7 +18,6 @@ import { CandidatesComponent } from '../../pages/candidates/candidates.component
   styleUrls: ['./edit-candidate-dialog.component.scss']
 })
 export class EditCandidateDialogComponent implements OnInit {
-  selectedOption: string;
   selectedCandidate: ExamLine[];
 
   creboValue: string;
@@ -62,7 +61,12 @@ export class EditCandidateDialogComponent implements OnInit {
   protected openConfirmationDialog() {
     const dialogRef = this.dialog.open(this.confirmationDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      this.selectedOption = result;
+      if (result) {
+        this.examApplicationService.deleteExamLines(this.selectedCandidate['id']).subscribe(
+          result => console.log(result));
+        this.dialog.closeAll();
+        this.examApplicationService.getExamLines();
+      }
     });
   }
 

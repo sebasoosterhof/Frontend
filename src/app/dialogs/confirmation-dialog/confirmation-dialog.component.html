@@ -5,6 +5,6 @@
 
 </div>
 <div fxLayout="row" fxLayoutAlign="end center">
-  <button md-button (click)="dialogRef.close()">Annuleren</button>
-  <button md-raised-button color="primary">Bevestigen</button>
+  <button md-button (click)="dialogRef.close(false)">Annuleren</button>
+  <button md-raised-button color="primary" (click)="dialogRef.close(true)">Bevestigen</button>
 </div>

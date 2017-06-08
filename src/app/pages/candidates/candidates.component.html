@@ -25,7 +25,7 @@
         <tr class="padding-top exit-student">
           <td data-title="Wijzig" class="padding-top">
             <span mdTooltip="Wijzig kandidaat eigenschappen" mdTooltipPosition="right">
-                <md-icon (click)="openEditCandidateDialog(i)" class="clickable">edit</md-icon>
+                <md-icon (click)="openEditCandidateDialog(line.id)" class="clickable">edit</md-icon>
             </span>
           </td>
           <td data-title="Naam" class="padding-top padding-left">{{ line.firstname }} {{ line.lastname }}</td>
@@ -42,7 +42,7 @@
         <ng-container *ngIf="line.status === 'candidate'">
           <td data-title="Wijzig" class="padding-top">
             <span mdTooltip="Wijzig de kandidaat" mdTooltipPosition="right">
-            <md-icon (click)="openEditCandidateDialog(i)" class="clickable">edit</md-icon>
+            <md-icon (click)="openEditCandidateDialog(line.id)" class="clickable">edit</md-icon>
           </span>
           </td>
           <td data-title="Naam" class="padding-top padding-left">{{ line.firstname }} {{ line.lastname }}</td>

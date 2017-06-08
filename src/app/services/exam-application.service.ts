@@ -12,12 +12,13 @@ import { Remark } from '../interfaces/remark';
 export class ExamApplicationService {
   private getExamLinesURL = 'http://127.0.0.1:8000/api/examlines/';
   private setExamLinesURL = 'http://127.0.0.1:8000/api/examlines/update/examline';
+  private deleteExamLinesURL = 'http://127.0.0.1:8000/api/examlines/delete/examline';
   private addCandidateURL = 'http://127.0.0.1:8000/api/examcandidates/store/candidate';
   private getRemarksURL = 'http://127.0.0.1:8000/api/remarks/';
 
 
 
-  constructor(private http: Http, ) { }
+  constructor(private http: Http) { }
 
 
   /*
@@ -30,7 +31,6 @@ export class ExamApplicationService {
   public getExamLines(): Observable<ExamLine[]> {
     return this.http.get(this.getExamLinesURL)
       .map((res: Response) => res.json())
-      // .catch((error: any) => Observable.throw('Server error'));
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
@@ -58,8 +58,26 @@ export class ExamApplicationService {
     const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.setExamLinesURL, examLine, headers)
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  /*
+  * @function: public deleteExamLines()
+  * @description: sets examLine to delete in ExamApplicationService.
+  * @params: examLineId
+  * @returns: http delete to API.
+  * @date: 07-06-2017
+  */
+  public deleteExamLines(examLineId): Observable<ExamLine[]> {
+    console.log(examLineId);
+    const key = 'id';
+    const val = examLineId;
+    const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.deleteExamLinesURL + '?' + key + '=' + val, options)
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   /*
@@ -74,25 +92,7 @@ export class ExamApplicationService {
     const headers = new Headers({ 'Content-Type': 'multipart/form-data' });
     const options = new RequestOptions({ headers: headers });
     return this.http.put(this.addCandidateURL, candidate, headers)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }
-
-
-  private extractData(res: Response) {
-    const body = res.json();
-    return body.data || {};
-  }
-
-  private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    return Observable.throw(errMsg);
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

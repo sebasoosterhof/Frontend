@@ -30,7 +30,6 @@ export class ExamApplicationController {
     //     this.candidates.push(line);
     //   }
     // }
-    // console.log(this.candidates);
     // return this.candidates;
   }
 
@@ -41,7 +40,6 @@ export class ExamApplicationController {
     //     this.candidates.push(line);
     //   }
     // }
-    // console.log(this.graduates);
     // return this.graduates;
   }
 
