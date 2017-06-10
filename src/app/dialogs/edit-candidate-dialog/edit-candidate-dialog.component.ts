@@ -63,9 +63,8 @@ export class EditCandidateDialogComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.examApplicationService.deleteExamLines(this.selectedCandidate['id']).subscribe(
-          result => console.log(result));
+          res => console.log(res));
         this.dialog.closeAll();
-        this.examApplicationService.getExamLines();
       }
     });
   }

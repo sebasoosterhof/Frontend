@@ -18,6 +18,7 @@ import { EditCandidateDialogComponent } from '../../dialogs/edit-candidate-dialo
 
 // Interfaces
 import { ExamLine } from '../../interfaces/exam-line';
+import { Exam } from '../../interfaces/exam';
 
 
 @Component({
@@ -28,6 +29,9 @@ import { ExamLine } from '../../interfaces/exam-line';
 export class CandidatesComponent implements OnInit {
   title = 'Kandidaten';
   candidates: ExamLine[];
+  exams: Exam[];
+
+  examLength: number;
 
   selectedCandidate: ExamLine;
 
@@ -37,8 +41,26 @@ export class CandidatesComponent implements OnInit {
   pvbBGColor: string;
   ogBGColor: string;
 
+  @Input("'checked1' + line.id")
+  checked1 = false;
+
+  @Input("'checked2' + line.id")
+  checked2 = false;
+
+  @Input("'checked3' + line.id")
+  checked3 = false;
+
   @Input()
-  checked;
+  checked4 = false;
+
+  @Input()
+  checked5 = false;
+
+  @Input()
+  checked6 = false;
+
+  @Input()
+  checked7 = false;
 
   private statusColorUndefined = '#fff';
   private statusColorYes = '#81C784';
@@ -95,8 +117,82 @@ export class CandidatesComponent implements OnInit {
     this.selectedPVB = '0';
     this.selectedOG = '0';
     this.getCandidates();
-    // this.checked = true;
+    this.getExams();
   }
+
+  /*
+  * @function: protected setExams()
+  * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @params: none
+  * @returns: none
+  * @date: 07-06-2017
+  */
+  public setExams() {
+    this.exams.forEach(e => {
+      const examDescription = e.description.split('-');
+      // console.log(examDescription);
+
+      this.examLength = examDescription.length;
+
+      // console.log(this.examLength);
+
+      // if (examDescription.includes('1')) {
+      //   this.checked1 = true;
+      // }
+      // if (examDescription.includes('2')) {
+      //   this.checked2 = true;
+      // }
+      // if (examDescription.includes('3')) {
+      //   this.checked3 = true;
+      // }
+      // if (examDescription.includes('4')) {
+      //   this.checked4 = true;
+      // }
+      // if (examDescription.includes('5')) {
+      //   this.checked5 = true;
+      // }
+      // if (examDescription.includes('6')) {
+      //   this.checked6 = true;
+      // }
+      // if (examDescription.includes('7')) {
+      //   this.checked7 = true;
+      // }
+    });
+  }
+
+  public getHBE(cValue, line_id) {
+    console.log(this.checked1);
+
+    console.log('cValue = ' + cValue + ' line_id = ' + line_id);
+    for (let i = 0; i < this.candidates.length; i++) {
+      const candidate = this.candidates[i];
+
+      this.exams.forEach(e => {
+        const examDescription = e.description.split('-');
+        // console.log(examDescription);
+
+        if (candidate.id === line_id) {
+          if (cValue === 1 && examDescription.includes('1') && this.checked1 === false) {
+            this.checked1 = true;
+            console.log('this.checked1 = false');
+          }
+          else if (cValue === 1 && examDescription.includes('1') && this.checked1 === true) {
+            this.checked1 = false;
+            console.log('this.checked1 = true');
+          }
+          // if (cValue === 5 && examDescription.includes('5') && this.checked5 === false) {
+          //   this.checked5 = true;
+          //   console.log('this.checked5 = false');
+          // }
+          // else if (cValue === 5 && examDescription.includes('5') && this.checked5 === true) {
+          //   this.checked5 = false;
+          //   console.log('this.checked5 = true');
+          // }
+        }
+      });
+    }
+  }
+
 
   /*
   * @function: public getCandidates()
@@ -106,34 +202,36 @@ export class CandidatesComponent implements OnInit {
   * @date: 27-05-2017
   */
   public getCandidates() {
-    this.examApplicationService.getExamLines().subscribe(result => this.candidates = result);
+    this.examApplicationService.getExamLines().subscribe(result => {
+      this.candidates = result;
+    });
   }
 
+
   /*
-  * @function: public getCandidates()
-  * @description: gets candidates from the ExamApplicationService through subscription.
+  * @function: protected getExams()
+  * @description: gets exams from the ExamApplicationService through subscription.
   * @params: none
   * @returns: none
   * @date: 27-05-2017
   */
-  public filterExams() {
-    // for (let i = 0, len = str.length; i < len; i++) {
-    //   alert(str[i]);
-    // }
+  public getExams() {
+    this.examApplicationService.getExams().subscribe(result => {
+      this.exams = result;
+    },
+      err => console.error(err),
+      () => this.setExams());
   }
-
 
   /*
   * @function: protected openEditCandidateDialog()
   * @description: opens the EditCandidateDialog. After the dialog has been close, the result will be fetched through subscription.
-  * @params: none
+  * @params: id
   * @returns: none
   * @date: 30-05-2017
   */
   protected openEditCandidateDialog(id) {
-    console.log(id);
     this.candidates.forEach(candidate => {
-      // const line = id + 1;
       if (candidate.id === id) {
         this.selectedCandidate = candidate;
       };
@@ -141,13 +239,14 @@ export class CandidatesComponent implements OnInit {
     const dialogRef = this.dialog.open(this.editCandidateDialogComponent, { data: this.selectedCandidate });
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
+      this.examApplicationService.getExamLines();
     });
   }
 
   /*
   * @function: protected openAddRemarkDialog()
   * @description: opens the AddRemarkDialog. After the dialog has been close, the result will be fetched through subscription.
-  * @params: none
+  * @params: c
   * @returns: none
   * @date: 22-05-2017
   */
@@ -168,7 +267,7 @@ export class CandidatesComponent implements OnInit {
   /*
   * @function: protected openRemarksDialog()
   * @description: opens the EditCandidateDialog.
-  * @params: none
+  * @params: c
   * @returns: none
   * @date: 22-05-2017
   */
@@ -185,6 +284,8 @@ export class CandidatesComponent implements OnInit {
       this.selectedOption = result;
     });
   }
+
+
 
   protected onPVBChanged(value: string) {
     if (this.selectedPVB === '0') {

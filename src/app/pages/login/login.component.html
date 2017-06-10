@@ -20,20 +20,20 @@
             <div fxLayout="column">
                 <div fxFlexOffset="10">
                     <md-input-container>
-                        <input mdInput placeholder="Emailadres" value="">
+                        <input [(ngModel)]="user.email" mdInput placeholder="Emailadres" value="">
                     </md-input-container>
                 </div>
 
                 <div fxFlexOffset="10">
                     <md-input-container class="input">
-                        <input mdInput type="password" placeholder="Wachtwoord" value="">
+                        <input [(ngModel)]="user.password" mdInput type="password" placeholder="Wachtwoord" value="">
                     </md-input-container>
                 </div>
             </div>
         </div>
-
+        {{ failedLogin }}
         <div fxLayout="row" fxLayoutAlign="center center" class="standard-padding">
-            <button md-raised-button color="primary" routerLink="/overzicht">Inloggen</button>
+            <button md-raised-button color="primary" (click)="login()">Inloggen</button>
         </div>
     </div>
 </div>
