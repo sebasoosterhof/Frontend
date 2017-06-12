@@ -8,7 +8,6 @@
 
 .login-form {
     position: absolute;
-    // text-align: center;
     background-color: $color-light;
     width: 35vw;
     height: 25vh;
@@ -21,4 +20,10 @@
 
 .input {
     margin-top: 1.5rem;
+}
+
+.error-message {
+  color: $text-color-error;
+  font-size: 1rem;
+  font-weight: 800;
 }

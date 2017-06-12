@@ -34,6 +34,8 @@ export class CandidatesComponent implements OnInit {
   examLength: number;
 
   selectedCandidate: ExamLine;
+  HBEOptionsChecked = [];
+  PVBOptionsChecked = [];
 
   selectedOption: string;
   selectedPVB: string;
@@ -41,26 +43,6 @@ export class CandidatesComponent implements OnInit {
   pvbBGColor: string;
   ogBGColor: string;
 
-  @Input("'checked1' + line.id")
-  checked1 = false;
-
-  @Input("'checked2' + line.id")
-  checked2 = false;
-
-  @Input("'checked3' + line.id")
-  checked3 = false;
-
-  @Input()
-  checked4 = false;
-
-  @Input()
-  checked5 = false;
-
-  @Input()
-  checked6 = false;
-
-  @Input()
-  checked7 = false;
 
   private statusColorUndefined = '#fff';
   private statusColorYes = '#81C784';
@@ -87,6 +69,39 @@ export class CandidatesComponent implements OnInit {
     { value: '4', viewValue: 'Doorschuiven' }
   ];
 
+  HBEChecks = [
+    'checked1',
+    'checked2',
+    'checked3',
+    'checked4',
+    'checked5',
+    'checked6',
+    'checked7'
+  ];
+
+  PVBChecks = [
+    'checked1',
+    'checked2',
+    'checked3',
+    'checked4'
+  ];
+
+  HBEChecksMap = [
+    { checked1: false },
+    { checked2: false },
+    { checked3: false },
+    { checked4: false },
+    { checked5: false },
+    { checked6: false },
+    { checked7: false }
+  ];
+
+  PVBChecksMap = [
+    { checked1: false },
+    { checked2: false },
+    { checked3: false },
+    { checked4: false }
+  ];
 
   protected addCandidateDialogComponent = AddCandidateDialogComponent;
 
@@ -117,81 +132,89 @@ export class CandidatesComponent implements OnInit {
     this.selectedPVB = '0';
     this.selectedOG = '0';
     this.getCandidates();
-    this.getExams();
+    this.setExams();
   }
 
   /*
-  * @function: protected setExams()
-  * @description: this is the first function that will be executed. It calls functions that has to be executed on pageload.
+  * @function: public setExams()
+  * @description: sets exams based on data from database..
   * @params: none
   * @returns: none
-  * @date: 07-06-2017
+  * @date: 12-06-2017
   */
   public setExams() {
-    this.exams.forEach(e => {
-      const examDescription = e.description.split('-');
-      // console.log(examDescription);
+    for (let i = 0; i < this.HBEChecks.length; i++) {
+      this.HBEChecksMap[this.HBEChecks[i]] = true;
+    }
 
-      this.examLength = examDescription.length;
-
-      // console.log(this.examLength);
-
-      // if (examDescription.includes('1')) {
-      //   this.checked1 = true;
-      // }
-      // if (examDescription.includes('2')) {
-      //   this.checked2 = true;
-      // }
-      // if (examDescription.includes('3')) {
-      //   this.checked3 = true;
-      // }
-      // if (examDescription.includes('4')) {
-      //   this.checked4 = true;
-      // }
-      // if (examDescription.includes('5')) {
-      //   this.checked5 = true;
-      // }
-      // if (examDescription.includes('6')) {
-      //   this.checked6 = true;
-      // }
-      // if (examDescription.includes('7')) {
-      //   this.checked7 = true;
-      // }
-    });
-  }
-
-  public getHBE(cValue, line_id) {
-    console.log(this.checked1);
-
-    console.log('cValue = ' + cValue + ' line_id = ' + line_id);
-    for (let i = 0; i < this.candidates.length; i++) {
-      const candidate = this.candidates[i];
-
-      this.exams.forEach(e => {
-        const examDescription = e.description.split('-');
-        // console.log(examDescription);
-
-        if (candidate.id === line_id) {
-          if (cValue === 1 && examDescription.includes('1') && this.checked1 === false) {
-            this.checked1 = true;
-            console.log('this.checked1 = false');
-          }
-          else if (cValue === 1 && examDescription.includes('1') && this.checked1 === true) {
-            this.checked1 = false;
-            console.log('this.checked1 = true');
-          }
-          // if (cValue === 5 && examDescription.includes('5') && this.checked5 === false) {
-          //   this.checked5 = true;
-          //   console.log('this.checked5 = false');
-          // }
-          // else if (cValue === 5 && examDescription.includes('5') && this.checked5 === true) {
-          //   this.checked5 = false;
-          //   console.log('this.checked5 = true');
-          // }
-        }
-      });
+    for (let i = 0; i < this.PVBChecks.length; i++) {
+      this.PVBChecksMap[this.PVBChecks[i]] = true;
     }
   }
+
+  /*
+  * @function: public setHBE()
+  * @description: sets WPT/HBE checks after change.
+  * @params: lineId, check, event
+  * @returns: none
+  * @date: 12-06-2017
+  */
+  public setHBE(lineId, check, event) {
+    this.HBEChecks[check] = event.checked;
+
+    const checked1 = this.HBEChecks['checked1'];
+    const checked2 = this.HBEChecks['checked2'];
+    const checked3 = this.HBEChecks['checked3'];
+    const checked4 = this.HBEChecks['checked4'];
+    const checked5 = this.HBEChecks['checked5'];
+    const checked6 = this.HBEChecks['checked6'];
+    const checked7 = this.HBEChecks['checked7'];
+
+
+    // this.updateHBEChecks();
+  }
+
+  /*
+  * @function: public setPVB()
+  * @description: sets PVB checks after change.
+  * @params: lineId, check, event
+  * @returns: none
+  * @date: 12-06-2017
+  */
+  public setPVB(lineId, check, event) {
+    this.PVBChecks[check] = event.checked;
+
+    const checked1 = this.PVBChecks['checked1'];
+    const checked2 = this.PVBChecks['checked2'];
+    const checked3 = this.PVBChecks['checked3'];
+    const checked4 = this.PVBChecks['checked4'];
+    const checked5 = this.PVBChecks['checked5'];
+    const checked6 = this.PVBChecks['checked6'];
+    const checked7 = this.PVBChecks['checked7'];
+
+
+    // this.updatePVBChecks();
+  }
+
+  // public updateHBEChecks() {
+  //   for (let i in this.HBEChecksMap) {
+  //     if (this.HBEChecksMap[i]) {
+  //       this.HBEOptionsChecked.push(i);
+  //     }
+  //   }
+  //   this.HBEChecks = this.HBEOptionsChecked;
+  //   this.HBEOptionsChecked = [];
+  // }
+
+  // public updatePVBChecks() {
+  //   for (let i in this.PVBChecksMap) {
+  //     if (this.PVBChecksMap[i]) {
+  //       this.PVBOptionsChecked.push(i);
+  //     }
+  //   }
+  //   this.PVBChecks = this.PVBOptionsChecked;
+  //   this.PVBOptionsChecked = [];
+  // }
 
 
   /*

@@ -22,8 +22,8 @@ import { AddCandidateDialogComponent } from '../../dialogs/add-candidate-dialog/
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-
-  public selectedOption: string;
+  currentUser: string;
+  selectedOption: string;
 
   protected addCandidateDialogComponent = AddCandidateDialogComponent;
 
@@ -34,6 +34,7 @@ export class OverviewComponent implements OnInit {
 
   public ngOnInit() {
     this.examApplicationService.checkLoginCredentials();
+    this.getAuthenticatedUser();
   }
 
   public logout() {
@@ -45,5 +46,11 @@ export class OverviewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
     });
+  }
+
+  protected getAuthenticatedUser() {
+    let authenticatedUser = localStorage.getItem('user');
+    authenticatedUser = JSON.parse(authenticatedUser);
+    this.currentUser = authenticatedUser['firstname'] + ' ' + authenticatedUser['lastname'];
   }
 }

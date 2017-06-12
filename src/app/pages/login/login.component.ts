@@ -29,14 +29,19 @@ export class LoginComponent implements OnInit {
     this.examApplicationService.getUsers().subscribe(result => {
       this.users = result;
     },
-      err => console.error(err),
-      () => console.log(this.users));
+      err => console.error(err));
   }
 
+  /*
+  * @function: public login()
+  * @description: checks if the login on the ExamApplicationService was succesful.
+  * @params: none
+  * @returns: none
+  * @date: 10-06-2017
+  */
   public login() {
-    console.log(this.user);
     if (!this.examApplicationService.login(this.user)) {
-      this.errMsg = 'Inloggen is niet gelukt';
+      this.errMsg = 'Gebruikersnaam of wachtwoord is onjuist.';
     }
   }
 }

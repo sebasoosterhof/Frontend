@@ -85,6 +85,10 @@ $table-border-color:            #e0e0e0;
 }
 
 .remark {
-  // position: absolute;
   top: 6rem;
+}
+
+.checkbox > input[type=checkbox] {
+  font-size: 1rem;
+  color: red;
 }

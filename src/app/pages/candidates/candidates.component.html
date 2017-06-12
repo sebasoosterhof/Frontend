@@ -51,25 +51,21 @@
           <td data-title="Crebo" class="padding-top padding-left">{{ line.crebo }}</td>
           <td data-title="Cohort" class="padding-top padding-left">{{ line.cohort }}</td>
           <td data-title="WPT/HBE" class="padding-top padding-left">
-            <!--1
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c1" [checked]="'checked1' + line.id" (click)="getHBE(1, line.id)"></md-checkbox>
-            2
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c2" [checked]="'checked2' + line.id" (click)="getHBE(2, line.id)"></md-checkbox>
-            3
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c3" [checked]="'checked3' + line.id" (click)="getHBE(3, line.id)"></md-checkbox>
-            4
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c4" [checked]="'checked4' + line.id" (click)="getHBE(4, line.id)"></md-checkbox>
-            5
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c5" [checked]="'checked5' + line.id" (click)="getHBE(5, line.id)"></md-checkbox>
-            6
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c6" [checked]="'checked6' + line.id" (click)="getHBE(6, line.id)"></md-checkbox>
-            7
-            <md-checkbox name="checkbox-{{i}}" color="primary" class="clickable" name="c7" [checked]="'checked7' + line.id" (click)="getHBE(7, line.id)"></md-checkbox>
--->
+
+
+            <ng-container *ngIf="line.exams_type != PVB">
+              <ng-container *ngFor="let check of HBEChecks; let i = index">
+                <md-checkbox color="primary" name="hbechecks" value="{{check}}" [checked]="HBEChecks.indexOf(check) < line.exams_description.split('-').length" (change)="setHBE(line.id, check, $event)">
+                </md-checkbox>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="line.exams_type === PVB">
+              <input type="checkbox" name="hbechecks" value="{{check}}" [checked]="HBEChecks.indexOf(check) < 7" (change)="setHBE(line.id, check, $event)"
+              />
+            </ng-container>
 
 
             {{ line.exams_description.split('-') }}
-
 
 
             <span *ngIf="line.remark_id != 1 && line.remark_component === 'WPT/HBE'" mdTooltip="{{ line.remark }}" class="tooltip">
@@ -88,14 +84,32 @@
             </md-select>
           </td>
           <td data-title="PVB" class="padding-top padding-left">
-            1
+
+            <!--1
             <md-checkbox color="primary" class="clickable"></md-checkbox>
             2
             <md-checkbox color="primary" class="clickable"></md-checkbox>
             3
             <md-checkbox color="primary" class="clickable"></md-checkbox>
             4
-            <md-checkbox color="primary" class="clickable"></md-checkbox>
+            <md-checkbox color="primary" class="clickable"></md-checkbox>-->
+
+
+            <ng-container *ngIf="line.exams_type != PVB">
+              <ng-container *ngFor="let check of PVBChecks; let i = index">
+                <md-checkbox color="primary" name="pvbchecks" value="{{option}}" [checked]="PVBChecks.indexOf(check) < 0" (change)="setPVB(line.id, check, $event)">
+                </md-checkbox>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="line.exams_type === PVB">
+              <ng-container *ngFor="let check of PVBChecks; let i = index">
+                 <input type="checkbox" name="pvbchecks" value="{{option}}" [checked]="PVBChecks.indexOf(check) < line.exams_description.split('-').length" (change)="setPVB(line.id, check, $event)"
+                 />
+              </ng-container>
+            </ng-container>
+
+
             <span *ngIf="line.remark_id != 1 && line.remark_component === 'PVB'" mdTooltip="{{ line.remark }}">
               <md-icon (click)="openRemarksDialog(i)" class="clickable" style="right:24.2rem;">feedback</md-icon>
             </span>

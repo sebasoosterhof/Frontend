@@ -133,11 +133,12 @@ export class ExamApplicationService {
   */
   public logout() {
     localStorage.removeItem('user');
+    localStorage.clear();
     this.router.navigate(['login']);
   }
 
   /*
-  * @function: public getExams()
+  * @function: public login()
   * @description: logs the user in
   * @params: user
   * @returns: logged in status.
@@ -147,23 +148,28 @@ export class ExamApplicationService {
     let users: User[];
     this.getUsers().subscribe(result => {
       users = result;
-    });
+    },
+      err => console.error(err));
 
     setTimeout(() => {
-      console.log(users);
       const authenticatedUser = users.find(u => u.email === user.email);
       if (authenticatedUser && authenticatedUser.password === user.password) {
         localStorage.setItem('user', JSON.stringify(authenticatedUser));
         this.router.navigate(['overzicht']);
-        console.log('true');
         return true;
       }
-      console.log('false');
       return false;
-    }, 500);
+    }, 1000);
 
   }
 
+  /*
+  * @function: public checkLoginCredentials()
+  * @description: checks for login credentials.
+  * @params: none
+  * @returns: none
+  * @date: 10-06-2017
+  */
   public checkLoginCredentials() {
     if (localStorage.getItem('user') === null) {
       this.router.navigate(['login']);
